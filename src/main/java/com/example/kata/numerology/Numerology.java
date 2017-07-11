@@ -1,17 +1,22 @@
 package com.example.kata.numerology;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Numerology {
     public List<Integer> replace(List<Integer> input) {
-        return input.stream().flatMap(integer -> {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < input.size(); i++) {
+            Integer integer = input.get(i);
             if (integer.equals(9)) {
-                return Stream.of(10, 10);
+                result.add(10);
+                result.add(10);
+            } else if(integer.equals(2)) {
+                result.add(1);
             } else {
-                return Stream.of(integer);
+                result.add(integer);
             }
-        }).collect(Collectors.toList());
+        }
+        return result;
     }
 }
