@@ -51,6 +51,7 @@ public class NumerologyShould {
     @Test
     public void replace_rule_3_cant_because_of_the_right() {
         assertThat(replace(asList(4, 6, 3, 4, 5)), is(asList(4, 6, 3, 4, 5)));
+        assertThat(replace(asList(1, 6)), is(asList(1, 6)));
     }
 
     private List<Integer> replace(List<Integer> input) {
