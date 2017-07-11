@@ -29,7 +29,6 @@ public class NumerologyShould {
 
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
-        assertThat(replace(asList(1, 2)), is(asList(1, 1)));
         assertThat(replace(asList(8, 2)), is(asList(8, 1,1,1,1,1,1,1,1)));
     }
 
