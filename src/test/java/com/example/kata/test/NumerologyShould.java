@@ -22,6 +22,11 @@ public class NumerologyShould {
         assertThat(new Numerology().replace(asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 9)), is(asList(1, 2, 3, 4, 5, 6, 7, 8, 10, 10, 10, 10)));
     }
 
+    @Test
+    public void replace_no_nines_by_two_tens_each() {
+        assertThat(new Numerology().replace(asList(1, 2, 3, 4, 5, 6, 7, 8)), is(asList(1, 2, 3, 4, 5, 6, 7, 8)));
+    }
+
     private List<Integer> replace() {
         return new Numerology().replace(asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
     }
