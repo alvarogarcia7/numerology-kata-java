@@ -11,6 +11,7 @@ public class Numerology {
         for (int i = 0; elementExists(input, i); i++) {
             assert elementExists(input, i) == elements.exists(i);
             Integer integer = input.get(i);
+            assert elements.at(i).equals(integer);
             if (integer.equals(9)) {
                 result.add(10);
                 result.add(10);
@@ -54,6 +55,10 @@ public class Numerology {
 
         public boolean exists(int i) {
             return i < values.size();
+        }
+
+        public Integer at(int index) {
+            return values.get(index);
         }
     }
 }
