@@ -17,8 +17,8 @@ public class Numerology {
                 Integer previousNumber = elements.previousOf(i);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
             } else if (integer.equals(6) && (nextElementExists(i)) && elementExists(input, i + previous(input, i))) {
-                Integer previous = previous(input, i);
-                int numberOfTimes = input.get(previous + i);
+                Integer previous = elements.previousOf(i);
+                int numberOfTimes = elements.at(previous + i);
                 System.out.println(numberOfTimes);
                 IntStream.rangeClosed(1, numberOfTimes).forEach((x) -> result.add(3));
             } else {
