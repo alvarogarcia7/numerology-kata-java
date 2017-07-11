@@ -48,6 +48,11 @@ public class NumerologyShould {
         assertThat(replace(asList(6, 3, 4, 5)), is(asList(6, 3, 4, 5)));
     }
 
+    @Test
+    public void replace_rule_3_cant_because_of_the_right() {
+        assertThat(replace(asList(4, 6, 3, 4, 5)), is(asList(4, 6, 3, 4, 5)));
+    }
+
     private List<Integer> replace(List<Integer> input) {
         return new Numerology().replace(input);
     }
