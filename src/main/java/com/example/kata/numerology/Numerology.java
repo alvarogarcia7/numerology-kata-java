@@ -2,7 +2,6 @@ package com.example.kata.numerology;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Numerology {
@@ -13,7 +12,7 @@ public class Numerology {
             if (integer.equals(9)) {
                 result.add(10);
                 result.add(10);
-            } else if(integer.equals(2)) {
+            } else if (integer.equals(2) && (i - 1 >= 0)) {
                 Integer previousNumber = input.get(i - 1);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
             } else {
