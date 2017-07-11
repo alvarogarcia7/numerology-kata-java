@@ -15,6 +15,11 @@ public class Numerology {
             } else if (integer.equals(2) && (i - 1 >= 0)) {
                 Integer previousNumber = input.get(i - 1);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
+            } else if (integer.equals(6) && (i - 1 >= 0) && (i + input.get(i - 1)) < input.size()) {
+                Integer previous = input.get(i - 1);
+                int numberOfTimes = input.get(previous + i);
+                System.out.println(numberOfTimes);
+                IntStream.rangeClosed(1, numberOfTimes).forEach((x) -> result.add(3));
             } else {
                 result.add(integer);
             }
