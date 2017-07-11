@@ -14,8 +14,7 @@ public class Numerology {
                 result.add(10);
                 result.add(10);
             } else if (integer.equals(2) && nextElementExists(i)) {
-                Integer previousNumber = previous(input, i);
-                assert previousNumber.equals(elements.previousOf(i));
+                Integer previousNumber = elements.previousOf(i);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
             } else if (integer.equals(6) && (nextElementExists(i)) && elementExists(input, i + previous(input, i))) {
                 Integer previous = previous(input, i);
