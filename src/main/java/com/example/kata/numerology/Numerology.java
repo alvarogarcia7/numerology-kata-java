@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class Numerology {
     public List<Integer> replace(List<Integer> input) {
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < input.size(); i++) {
+        for (int i = 0; elementExists(input, i); i++) {
             Integer integer = input.get(i);
             if (integer.equals(9)) {
                 result.add(10);
@@ -15,7 +15,7 @@ public class Numerology {
             } else if (integer.equals(2) && nextElementExists(i)) {
                 Integer previousNumber = previous(input, i);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
-            } else if (integer.equals(6) && (nextElementExists(i)) && (i + previous(input, i)) < input.size()) {
+            } else if (integer.equals(6) && (nextElementExists(i)) && elementExists(input, i + previous(input, i))) {
                 Integer previous = previous(input, i);
                 int numberOfTimes = input.get(previous + i);
                 System.out.println(numberOfTimes);
@@ -25,6 +25,10 @@ public class Numerology {
             }
         }
         return result;
+    }
+
+    private boolean elementExists(List<Integer> input, int index) {
+        return index < input.size();
     }
 
     private Integer previous(List<Integer> input, int i) {
