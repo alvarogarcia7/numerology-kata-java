@@ -32,6 +32,11 @@ public class NumerologyShould {
         assertThat(replace(asList(8, 2)), is(asList(8, 1,1,1,1,1,1,1,1)));
     }
 
+    @Test
+    public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
+        assertThat(replace(asList(2)), is(asList(2)));
+    }
+
     private List<Integer> replace(List<Integer> input) {
         return new Numerology().replace(input);
     }
