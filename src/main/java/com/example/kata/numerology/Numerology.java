@@ -8,8 +8,7 @@ public class Numerology {
     public List<Integer> replace(List<Integer> input) {
         Elements elements = Elements.in(input);
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; elementExists(input, i); i++) {
-            assert elementExists(input, i) == elements.exists(i);
+        for (int i = 0; elements.exists(i); i++) {
             Integer integer = input.get(i);
             assert elements.at(i).equals(integer);
             if (integer.equals(9)) {
