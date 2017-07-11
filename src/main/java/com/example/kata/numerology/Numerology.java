@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class Numerology {
     public List<Integer> replace(List<Integer> input) {
+        Elements.in(input);
         List<Integer> result = new ArrayList<>();
         for (int i = 0; elementExists(input, i); i++) {
             Integer integer = input.get(i);
@@ -37,5 +38,17 @@ public class Numerology {
 
     private boolean nextElementExists(int i) {
         return i - 1 >= 0;
+    }
+
+    private static class Elements {
+        private final List<Integer> values;
+
+        public Elements(List<Integer> values) {
+            this.values = values;
+        }
+
+        public static Elements in(List<Integer> values) {
+            return new Elements(values);
+        }
     }
 }
