@@ -6,9 +6,10 @@ import java.util.stream.IntStream;
 
 public class Numerology {
     public List<Integer> replace(List<Integer> input) {
-        Elements.in(input);
+        Elements elements = Elements.in(input);
         List<Integer> result = new ArrayList<>();
         for (int i = 0; elementExists(input, i); i++) {
+            assert elementExists(input, i) == elements.exists(i);
             Integer integer = input.get(i);
             if (integer.equals(9)) {
                 result.add(10);
@@ -49,6 +50,10 @@ public class Numerology {
 
         public static Elements in(List<Integer> values) {
             return new Elements(values);
+        }
+
+        public boolean exists(int i) {
+            return i < values.size();
         }
     }
 }
