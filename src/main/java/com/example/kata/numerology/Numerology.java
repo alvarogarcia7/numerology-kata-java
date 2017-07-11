@@ -12,10 +12,10 @@ public class Numerology {
             if (integer.equals(9)) {
                 result.add(10);
                 result.add(10);
-            } else if (integer.equals(2) && (i - 1 >= 0)) {
+            } else if (integer.equals(2) && nextElementExists(i)) {
                 Integer previousNumber = input.get(i - 1);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
-            } else if (integer.equals(6) && (i - 1 >= 0) && (i + input.get(i - 1)) < input.size()) {
+            } else if (integer.equals(6) && (nextElementExists(i)) && (i + input.get(i - 1)) < input.size()) {
                 Integer previous = input.get(i - 1);
                 int numberOfTimes = input.get(previous + i);
                 System.out.println(numberOfTimes);
@@ -25,5 +25,9 @@ public class Numerology {
             }
         }
         return result;
+    }
+
+    private boolean nextElementExists(int i) {
+        return i - 1 >= 0;
     }
 }
