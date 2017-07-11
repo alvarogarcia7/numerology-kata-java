@@ -9,8 +9,7 @@ public class Numerology {
         Elements elements = Elements.in(input);
         List<Integer> result = new ArrayList<>();
         for (int i = 0; elements.exists(i); i++) {
-            Integer integer = input.get(i);
-            assert elements.at(i).equals(integer);
+            Integer integer = elements.at(i);
             if (integer.equals(9)) {
                 result.add(10);
                 result.add(10);
