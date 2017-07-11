@@ -13,10 +13,10 @@ public class Numerology {
             if (integer.equals(9)) {
                 result.add(10);
                 result.add(10);
-            } else if (integer.equals(2) && nextElementExists(i)) {
+            } else if (integer.equals(2) && elements.exists(i - 1)) {
                 Integer previousNumber = elements.previousOf(i);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
-            } else if (integer.equals(6) && (nextElementExists(i)) && elementExists(input, i + previous(input, i))) {
+            } else if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(input, i + previous(input, i))) {
                 Integer previous = elements.previousOf(i);
                 int numberOfTimes = elements.at(previous + i);
                 IntStream.rangeClosed(1, numberOfTimes).forEach((x) -> result.add(3));
@@ -35,10 +35,6 @@ public class Numerology {
         return input.get(i - 1);
     }
 
-    private boolean nextElementExists(int i) {
-        return i - 1 >= 0;
-    }
-
     private static class Elements {
         private final List<Integer> values;
 
@@ -51,7 +47,7 @@ public class Numerology {
         }
 
         public boolean exists(int i) {
-            return i < values.size();
+            return i>=0 && i < values.size();
         }
 
         public Integer at(int index) {
