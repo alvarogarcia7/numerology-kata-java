@@ -2,6 +2,7 @@ package com.example.kata.test;
 
 import com.example.kata.numerology.Numerology;
 import com.example.kata.numerology.NumerologyWithRules;
+import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import org.junit.Test;
 
 import java.util.List;
@@ -57,7 +58,7 @@ public class NumerologyShould {
 
     private List<Integer> replace(List<Integer> input) {
         List<Integer> replace = new Numerology().replace(input);
-        assert replace.equals(new NumerologyWithRules().replace(input));
+        assert replace.equals(new NumerologyWithRules(new Rule9ForTwo10s()).replace(input));
         return replace;
     }
 }

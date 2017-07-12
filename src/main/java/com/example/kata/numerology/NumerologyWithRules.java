@@ -8,13 +8,20 @@ import java.util.function.BiFunction;
 import java.util.stream.IntStream;
 
 public class NumerologyWithRules {
+
+    private Rule9ForTwo10s rule9ForTwo10s;
+
+    public NumerologyWithRules(Rule9ForTwo10s rule9ForTwo10s) {
+        this.rule9ForTwo10s = rule9ForTwo10s;
+    }
+
     public List<Integer> replace(List<Integer> input) {
         Elements elements = Elements.in(input);
         List<Integer> result = new ArrayList<>();
         for (int i = 0; elements.exists(i); i++) {
             Integer integer = elements.at(i);
             if (integer.equals(9)) {
-                Rule9ForTwo10s rule9ForTwo10s = new Rule9ForTwo10s();
+                Rule9ForTwo10s rule9ForTwo10s = this.rule9ForTwo10s;
                 result.addAll(rule9ForTwo10s.apply(elements));
             } else if (integer.equals(2) && elements.exists(i - 1)) {
                 Integer previousNumber = elements.previousOf(i);
