@@ -31,13 +31,4 @@ public class NumerologyWithRules {
         }
         return result;
     }
-
-    private boolean elementExists(List<Integer> input, int index) {
-        return index < input.size();
-    }
-
-    private Integer previous(List<Integer> input, int i) {
-        return input.get(i - 1);
-    }
-
 }
