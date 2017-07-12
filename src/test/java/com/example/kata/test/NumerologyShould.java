@@ -1,6 +1,7 @@
 package com.example.kata.test;
 
 import com.example.kata.numerology.Numerology;
+import com.example.kata.numerology.NumerologyWithRules;
 import org.junit.Test;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class NumerologyShould {
     }
 
     private List<Integer> replaceWithRule9ForTwo10s(List<Integer> integers) {
-        return replace(integers);
+        return new NumerologyWithRules().replace(integers);
     }
 
     @Test
