@@ -60,7 +60,8 @@ public class NumerologyShould {
 
     private List<Integer> replace(List<Integer> input) {
         List<Integer> replace = new Numerology().replace(input);
-        assert replace.equals(new NumerologyWithRules(new Rule9ForTwo10s(), new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(), new RuleReplace6ForAsMany3AsTheValueToTheNthRight()).replace(input));
+        List<Integer> replace1 = new NumerologyWithRules(new Rule9ForTwo10s(), new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(), new RuleReplace6ForAsMany3AsTheValueToTheNthRight()).replace(input);
+        assertThat(replace, is(replace1));
         return replace;
     }
 }
