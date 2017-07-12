@@ -1,18 +1,16 @@
 package com.example.kata.numerology;
 
-import com.example.kata.numerology.rules.Rule9ForTwo10s;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class NumerologyWithRules {
 
-    private Rule9ForTwo10s rule9ForTwo10s;
+    private Rule rule;
     private Rule rule2;
 
-    public NumerologyWithRules(Rule9ForTwo10s rule9ForTwo10s, Rule rule2) {
-        this.rule9ForTwo10s = rule9ForTwo10s;
+    public NumerologyWithRules(Rule rule, Rule rule2) {
+        this.rule = rule;
         this.rule2 = rule2;
     }
 
@@ -22,7 +20,7 @@ public class NumerologyWithRules {
         for (int i = 0; elements.exists(i); i++) {
             Integer integer = elements.at(i);
             rule2.apply(elements, i).map(result::addAll);
-            rule9ForTwo10s.apply(elements, i).map(result::addAll);
+            rule.apply(elements, i).map(result::addAll);
             if (integer.equals(9)) {
             } else if (integer.equals(2) && elements.exists(i - 1)) {
                 //can't remove this yet

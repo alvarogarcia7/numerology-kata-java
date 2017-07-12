@@ -1,12 +1,13 @@
 package com.example.kata.numerology.rules;
 
 import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.Rule;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class Rule9ForTwo10s {
+public class Rule9ForTwo10s implements Rule {
     public Optional<List<Integer>> apply(Elements elements, int index) {
         Integer integer = elements.at(index);
         if (integer.equals(9)) {
