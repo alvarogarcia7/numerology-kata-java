@@ -59,6 +59,12 @@ public class NumerologyShould {
     }
 
     private List<Integer> replace(List<Integer> input) {
-        return new Numerology(new Rule9ForTwo10s(), new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(), new RuleReplace6ForAsMany3AsTheValueToTheNthRight(), new RuleIdentity()).replace(input);
+        return new Numerology(
+                new Rule9ForTwo10s(),
+                new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(),
+                new RuleReplace6ForAsMany3AsTheValueToTheNthRight(),
+                new RuleIdentity())
+
+                .replace(input);
     }
 }
