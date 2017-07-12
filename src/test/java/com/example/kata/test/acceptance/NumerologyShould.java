@@ -1,4 +1,4 @@
-package com.example.kata.test;
+package com.example.kata.test.acceptance;
 
 import com.example.kata.numerology.Numerology;
 import com.example.kata.numerology.RuleIdentity;
