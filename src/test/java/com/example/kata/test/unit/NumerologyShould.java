@@ -36,7 +36,7 @@ public class NumerologyShould {
     //Rule number 2
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
-        assertThat(replaceOnlyWithSecondRule(asList(8, 2)), is(asList(8, 1, 1, 1, 1, 1, 1, 1, 1)));
+        assertThat(replaceOnlyWithSecondRule(asList(8, 2, 9)), is(asList(8, 1, 1, 1, 1, 1, 1, 1, 1, 9)));
     }
 
     @Test
