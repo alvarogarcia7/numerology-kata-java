@@ -21,8 +21,7 @@ public class NumerologyWithRules {
         for (int i = 0; elements.exists(i); i++) {
             Integer integer = elements.at(i);
             if (integer.equals(9)) {
-                Rule9ForTwo10s rule9ForTwo10s = this.rule9ForTwo10s;
-                result.addAll(rule9ForTwo10s.apply(elements));
+                result.addAll(this.rule9ForTwo10s.apply(elements));
             } else if (integer.equals(2) && elements.exists(i - 1)) {
                 Integer previousNumber = elements.previousOf(i);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
