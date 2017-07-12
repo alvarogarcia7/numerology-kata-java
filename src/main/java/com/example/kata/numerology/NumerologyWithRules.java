@@ -24,9 +24,6 @@ public class NumerologyWithRules {
             } else if (integer.equals(2) && elements.exists(i - 1)) {
                 //can't remove this yet
             } else if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(input, i + previous(input, i))) {
-                Integer previous = elements.previousOf(i);
-                int numberOfTimes = elements.at(previous + i);
-                IntStream.rangeClosed(1, numberOfTimes).forEach((x) -> result.add(3));
             } else {
                 result.add(integer);
             }
