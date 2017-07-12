@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 public class NumerologyWithRules {
 
     private Rule9ForTwo10s rule9ForTwo10s;
-    private RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2;
+    private Rule rule2;
 
-    public NumerologyWithRules(Rule9ForTwo10s rule9ForTwo10s, RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2) {
+    public NumerologyWithRules(Rule9ForTwo10s rule9ForTwo10s, Rule rule2) {
         this.rule9ForTwo10s = rule9ForTwo10s;
         this.rule2 = rule2;
     }
