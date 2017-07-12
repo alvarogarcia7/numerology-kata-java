@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class NumerologyWithRules {
+public class Numerology {
 
     private final Rule[] rules;
 
-    public NumerologyWithRules(Rule... rules) {
+    public Numerology(Rule... rules) {
         this.rules = rules;
     }
 
