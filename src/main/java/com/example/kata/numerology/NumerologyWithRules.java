@@ -4,15 +4,16 @@ import com.example.kata.numerology.rules.Rule9ForTwo10s;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.stream.IntStream;
 
 public class NumerologyWithRules {
 
     private Rule9ForTwo10s rule9ForTwo10s;
+    private RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2;
 
-    public NumerologyWithRules(Rule9ForTwo10s rule9ForTwo10s) {
+    public NumerologyWithRules(Rule9ForTwo10s rule9ForTwo10s, RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2) {
         this.rule9ForTwo10s = rule9ForTwo10s;
+        this.rule2 = rule2;
     }
 
     public List<Integer> replace(List<Integer> input) {
@@ -23,8 +24,7 @@ public class NumerologyWithRules {
             if (integer.equals(9)) {
                 result.addAll(this.rule9ForTwo10s.apply(elements));
             } else if (integer.equals(2) && elements.exists(i - 1)) {
-                Integer previousNumber = elements.previousOf(i);
-                IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));
+                rule2.applyRule2(elements, i, result);
             } else if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(input, i + previous(input, i))) {
                 Integer previous = elements.previousOf(i);
                 int numberOfTimes = elements.at(previous + i);
