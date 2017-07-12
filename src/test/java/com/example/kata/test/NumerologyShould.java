@@ -1,6 +1,7 @@
 package com.example.kata.test;
 
 import com.example.kata.numerology.Numerology;
+import com.example.kata.numerology.RuleIdentity;
 import com.example.kata.numerology.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
@@ -58,6 +59,6 @@ public class NumerologyShould {
     }
 
     private List<Integer> replace(List<Integer> input) {
-        return new Numerology(new Rule9ForTwo10s(), new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(), new RuleReplace6ForAsMany3AsTheValueToTheNthRight()).replace(input);
+        return new Numerology(new Rule9ForTwo10s(), new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(), new RuleReplace6ForAsMany3AsTheValueToTheNthRight(), new RuleIdentity()).replace(input);
     }
 }
