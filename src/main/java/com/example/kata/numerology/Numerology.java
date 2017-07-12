@@ -3,6 +3,7 @@ package com.example.kata.numerology;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Numerology {
 
@@ -19,10 +20,10 @@ public class Numerology {
             final Integer index = i;
             Arrays
                     .stream(rules)
-                    .filter(rule -> rule.apply(elements, index).isPresent())
-                    .map(rule -> rule.apply(elements, index).get())
+                    .map(rule -> rule.apply(elements, index))
+                    .filter(Optional::isPresent)
                     .findFirst()
-                    .map(result::addAll);
+                    .map(firstRuleThatApplies -> firstRuleThatApplies.map(result::addAll));
         }
         return result;
     }
