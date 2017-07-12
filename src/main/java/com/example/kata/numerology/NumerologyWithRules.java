@@ -1,7 +1,10 @@
 package com.example.kata.numerology;
 
+import com.example.kata.numerology.rules.Rule9ForTwo10s;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.stream.IntStream;
 
 public class NumerologyWithRules {
@@ -11,8 +14,8 @@ public class NumerologyWithRules {
         for (int i = 0; elements.exists(i); i++) {
             Integer integer = elements.at(i);
             if (integer.equals(9)) {
-                result.add(10);
-                result.add(10);
+                Rule9ForTwo10s rule9ForTwo10s = new Rule9ForTwo10s();
+                result.addAll(rule9ForTwo10s.apply(elements));
             } else if (integer.equals(2) && elements.exists(i - 1)) {
                 Integer previousNumber = elements.previousOf(i);
                 IntStream.rangeClosed(1, previousNumber).forEach((x) -> result.add(1));

@@ -2,7 +2,7 @@ package com.example.kata.numerology;
 
 import java.util.List;
 
-class Elements {
+public class Elements {
     private final List<Integer> values;
 
     public Elements(List<Integer> values) {
