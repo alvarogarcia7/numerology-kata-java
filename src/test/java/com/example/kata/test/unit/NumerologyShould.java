@@ -18,18 +18,18 @@ public class NumerologyShould {
     //Rule number 1
     @Test
     public void replace_a_single_nine_by_two_tens() {
-        assertThat(replaceOnlyWithFirstRule(asList(1, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 3, 4, 5, 7, 8, 10, 10, 10)));
+        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
     }
 
     @Test
     public void replace_multiple_nines_by_two_tens_each() {
-        assertThat(replaceOnlyWithFirstRule(asList(1, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 3, 4, 5, 7, 8, 10, 10, 10)));
-        assertThat(replaceOnlyWithFirstRule(asList(1, 3, 4, 5, 7, 8, 9, 9)), is(asList(1, 3, 4, 5, 7, 8, 10, 10, 10, 10)));
+        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
+        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 9)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10, 10)));
     }
 
     @Test
     public void replace_no_nines_by_two_tens_each() {
-        assertThat(replaceOnlyWithFirstRule(asList(1, 3, 4, 5, 7, 8)), is(asList(1, 3, 4, 5, 7, 8)));
+        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8)), is(asList(1, 2, 3, 4, 5, 7, 8)));
     }
 
 
