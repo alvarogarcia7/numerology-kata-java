@@ -14,11 +14,6 @@ public class NumerologyShould {
     @Test
     public void replace_a_single_nine_by_two_tens() {
         assertThat(replace(asList(1, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 3, 4, 5, 7, 8, 10, 10, 10)));
-        assertThat(replaceWithRule9ForTwo10s(asList(1, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 3, 4, 5, 7, 8, 10, 10, 10)));
-    }
-
-    private List<Integer> replaceWithRule9ForTwo10s(List<Integer> integers) {
-        return new NumerologyWithRules().replace(integers);
     }
 
     @Test
@@ -61,6 +56,8 @@ public class NumerologyShould {
     }
 
     private List<Integer> replace(List<Integer> input) {
-        return new Numerology().replace(input);
+        List<Integer> replace = new Numerology().replace(input);
+        assert replace.equals(new NumerologyWithRules().replace(input));
+        return replace;
     }
 }
