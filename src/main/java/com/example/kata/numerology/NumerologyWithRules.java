@@ -21,10 +21,11 @@ public class NumerologyWithRules {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; elements.exists(i); i++) {
             Integer integer = elements.at(i);
+            rule2.apply(elements, i).map(result::addAll);
             if (integer.equals(9)) {
                 result.addAll(this.rule9ForTwo10s.apply(elements));
             } else if (integer.equals(2) && elements.exists(i - 1)) {
-                result.addAll(rule2.apply(elements, i).get());
+
             } else if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(input, i + previous(input, i))) {
                 Integer previous = elements.previousOf(i);
                 int numberOfTimes = elements.at(previous + i);
