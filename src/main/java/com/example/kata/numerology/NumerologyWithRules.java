@@ -23,7 +23,7 @@ public class NumerologyWithRules {
             Integer integer = elements.at(i);
             rule2.apply(elements, i).map(result::addAll);
             if (integer.equals(9)) {
-                result.addAll(this.rule9ForTwo10s.apply(elements));
+                result.addAll(this.rule9ForTwo10s.apply(elements, i).get());
             } else if (integer.equals(2) && elements.exists(i - 1)) {
                 //can't remove this yet
             } else if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(input, i + previous(input, i))) {
