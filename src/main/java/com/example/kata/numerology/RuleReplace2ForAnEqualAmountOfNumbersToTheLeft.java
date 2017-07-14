@@ -10,6 +10,9 @@ public class RuleReplace2ForAnEqualAmountOfNumbersToTheLeft implements Rule {
 
     @Override
     public Optional<List<Integer>> apply(Elements elements, int index) {
+        if(!elements.exists(index)){
+            return Optional.empty();
+        }
         Integer integer = elements.at(index);
         if (integer.equals(2) && elements.exists(index - 1)) {
             Integer previousNumber = elements.previousOf(index);
