@@ -14,7 +14,7 @@ public class Rules {
         return new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft();
     }
 
-    static RuleReplace6ForAsMany3AsTheValueToTheNthRight rule3() {
+    public static RuleReplace6ForAsMany3AsTheValueToTheNthRight rule3() {
         return new RuleReplace6ForAsMany3AsTheValueToTheNthRight();
     }
 }
