@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,21 @@ public class NumerologyShould {
         List<Integer> result = numerology.replace(asList(9));
 
         assertThat(result, is(asList(1)));
+    }
+
+    @Test
+    public void not_depend_on_having_a_catchall_rule() {
+
+        Rule contradiction = contradictionRule();
+        Numerology numerology = new Numerology(contradiction);
+
+        List<Integer> result = numerology.replace(asList(9));
+
+        assertThat(result, is(Collections.emptyList()));
+    }
+
+    private Rule contradictionRule() {
+        return (elements, index) -> Optional.empty();
     }
 
     /**
