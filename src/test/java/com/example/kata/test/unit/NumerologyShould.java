@@ -62,6 +62,12 @@ public class NumerologyShould {
         assertThat(rule3(asList(2), 0), is(Optional.empty()));
     }
 
+
+    @Test
+    public void rule_3_cannot_access_a_nonexisting_index() {
+        assertThat(rule3(asList(2), 1), is(Optional.empty()));
+    }
+
     @Test
     public void replace_rule_3() {
         assertThat(replaceOnlyWithThirdRule(asList(1, 6, 3, 4, 5)), is(asList(1, 3, 3, 3, 3, 4, 5)));

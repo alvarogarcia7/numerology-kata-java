@@ -13,6 +13,9 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
     @Override
     public Optional<List<Integer>> apply(Elements elements, int i) {
+        if (!elements.exists(i)) {
+            return Optional.empty();
+        }
         Integer integer = elements.at(i);
         if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(elements, i + previous(elements, i))) {
             Integer previous = elements.previousOf(i);
