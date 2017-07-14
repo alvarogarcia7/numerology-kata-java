@@ -2,9 +2,9 @@ package com.example.kata.test.helper;
 
 import com.example.kata.numerology.Elements;
 import com.example.kata.numerology.Rule;
+import io.vavr.control.Option;
 
 import java.util.List;
-import java.util.Optional;
 
 public class RuleCaseBuilder {
     private Rule rule;
@@ -21,7 +21,7 @@ public class RuleCaseBuilder {
         return this;
     }
 
-    public Optional<List<Integer>> at(int index) {
+    public Option<List<Integer>> at(int index) {
         return rule.apply(Elements.in(this.input), index);
     }
 }

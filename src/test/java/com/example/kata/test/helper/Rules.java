@@ -4,9 +4,9 @@ import com.example.kata.numerology.Rule;
 import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
+import io.vavr.control.Option;
 
 import java.util.List;
-import java.util.Optional;
 
 public class Rules {
     public static Rule rule1() {
@@ -27,7 +27,7 @@ public class Rules {
      *
      */
     public static Rule tautologyThatProduces(final List<Integer> value) {
-        return (elements, index) -> Optional.of(value);
+        return (elements, index) -> Option.of(value);
     }
 
     /**
@@ -35,6 +35,6 @@ public class Rules {
      * In this case, it never applies, therefore always return an empty list
      */
     public static Rule contradiction() {
-        return (elements, index) -> Optional.empty();
+        return (elements, index) -> Option.none();
     }
 }

@@ -1,8 +1,9 @@
 package com.example.kata.numerology;
 
+import io.vavr.control.Option;
+
 import java.util.List;
-import java.util.Optional;
 
 public interface Rule {
-    Optional<List<Integer>> apply(Elements elements, int index);
+    Option<List<Integer>> apply(Elements elements, int index);
 }

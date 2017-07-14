@@ -1,9 +1,12 @@
 package com.example.kata.numerology;
 
-import java.util.*;
+import io.vavr.control.Option;
+
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Supplier;
 
-import static java.util.Arrays.*;
+import static java.util.Arrays.stream;
 
 public class Numerology {
 
@@ -26,12 +29,12 @@ public class Numerology {
         return Elements.in(
                 stream(rules)
                 .map(rule -> rule.apply(elements, index))
-                .filter(Optional::isPresent)
+                .filter(Option::isDefined)
                 .findFirst()
                 .orElseGet(emptyList()).get());
     }
 
-    private Supplier<Optional<List<Integer>>> emptyList() {
-        return () -> Optional.of(Collections.emptyList());
+    private Supplier<Option<List<Integer>>> emptyList() {
+        return () -> Option.of(Collections.emptyList());
     }
 }
