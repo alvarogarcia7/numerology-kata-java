@@ -20,7 +20,6 @@ public class NumerologyShould {
     //Rule number 1
     @Test
     public void replace_a_single_nine_by_two_tens() {
-        assertThat(rule1(asList(1)), is(Optional.empty()));
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
     }
 
@@ -32,6 +31,7 @@ public class NumerologyShould {
 
     @Test
     public void replace_no_nines_by_two_tens_each() {
+        assertThat(rule1(asList(1)), is(Optional.empty()));
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8)), is(asList(1, 2, 3, 4, 5, 7, 8)));
     }
 
