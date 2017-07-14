@@ -32,6 +32,7 @@ public class Rules {
 
     /**
      * Contradiction = something that is always false
+     * In this case, it never applies, therefore always return an empty list
      */
     public static Rule contradiction() {
         return (elements, index) -> Optional.empty();
