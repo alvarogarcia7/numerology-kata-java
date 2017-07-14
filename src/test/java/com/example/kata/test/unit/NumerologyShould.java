@@ -51,6 +51,7 @@ public class NumerologyShould {
 
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
+        assertThat(rule2(asList(2), 0), is(Optional.empty()));
         assertThat(replaceOnlyWithSecondRule(asList(2)), is(asList(2)));
     }
 
