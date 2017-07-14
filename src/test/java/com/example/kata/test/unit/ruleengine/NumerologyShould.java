@@ -17,7 +17,6 @@ public class NumerologyShould {
 
     @Test
     public void apply_only_the_first_rule_that_matches() {
-
         Rule tautology1 = tautologyThatProduces(asList(1));
         Rule tautology2 = tautologyThatProduces(asList(2));
         Numerology numerology = new Numerology(tautology1, tautology2);
@@ -29,9 +28,7 @@ public class NumerologyShould {
 
     @Test
     public void not_depend_on_having_a_catchall_rule() {
-
-        Rule contradiction = contradiction();
-        Numerology numerology = new Numerology(contradiction);
+        Numerology numerology = new Numerology(contradiction());
 
         List<Integer> result = numerology.replace(asList(9));
 
