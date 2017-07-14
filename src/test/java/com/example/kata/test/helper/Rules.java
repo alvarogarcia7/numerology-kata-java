@@ -23,7 +23,7 @@ public class Rules {
 
     /**
      * Tautology = always is true
-     * in this case, always applies
+     * In this case, always applies
      *
      */
     public static Rule tautologyThatProduces(final List<Integer> value) {
