@@ -13,13 +13,18 @@ public class Numerology {
 
     public List<Integer> replace(List<Integer> values) {
         Elements input = Elements.in(values);
-        return input.flatMapWithIndex((Elements elements, Integer index) -> Elements.in(Arrays
+        return input
+                .flatMapWithIndex(this::applyAllRules)
+                .toList();
+    }
+
+    private Elements applyAllRules(Elements elements, Integer index) {
+        return Elements.in(Arrays
                 .stream(rules)
                 .map(rule -> rule.apply(elements, index))
                 .filter(Optional::isPresent)
                 .findFirst()
-                .orElseGet(emptyList()).get()))
-                .toList();
+                .orElseGet(emptyList()).get());
     }
 
     private Supplier<Optional<List<Integer>>> emptyList() {
