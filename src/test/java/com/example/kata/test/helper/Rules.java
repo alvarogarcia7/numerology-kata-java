@@ -30,6 +30,9 @@ public class Rules {
         return (elements, index) -> Optional.of(value);
     }
 
+    /**
+     * Contradiction = something that is always false
+     */
     public static Rule contradiction() {
         return (elements, index) -> Optional.empty();
     }
