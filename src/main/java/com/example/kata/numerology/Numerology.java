@@ -1,6 +1,7 @@
 package com.example.kata.numerology;
 
 import java.util.*;
+import java.util.function.Supplier;
 
 public class Numerology {
 
@@ -16,6 +17,10 @@ public class Numerology {
                 .stream(rules)
                 .map(rule -> rule.apply(elements1, index))
                 .filter(Optional::isPresent)
-                .findFirst().orElseGet(() -> Optional.of(Collections.emptyList())).get())).toList();
+                .findFirst().orElseGet(emptyList()).get())).toList();
+    }
+
+    private Supplier<Optional<List<Integer>>> emptyList() {
+        return () -> Optional.of(Collections.emptyList());
     }
 }
