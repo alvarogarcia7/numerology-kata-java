@@ -2,7 +2,6 @@ package com.example.kata.test.unit;
 
 import org.junit.Test;
 
-import java.util.List;
 import java.util.Optional;
 
 import static com.example.kata.test.unit.RuleCaseBuilder.apply;
@@ -32,50 +31,46 @@ public class NumerologyShould {
     //Rule number 2
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
-        assertThat(apply(Rules.rule2()).to(asList(8, 2)).at(1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
+        assertThat(apply(rule2()).to(asList(8, 2)).at(1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
     }
 
     @Test
     public void rule_2_cannot_access_a_nonexisting_index() {
-        assertThat(apply(Rules.rule2()).to(asList(2)).at(1), is(Optional.empty()));
+        assertThat(apply(rule2()).to(asList(2)).at(1), is(Optional.empty()));
     }
 
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
-        assertThat(apply(Rules.rule2()).to(asList(2)).at(0), is(Optional.empty()));
+        assertThat(apply(rule2()).to(asList(2)).at(0), is(Optional.empty()));
     }
 
 
     //Rule number 3
     @Test
     public void not_apply_rule_3_to_numbers_that_not_match_the_specification() {
-        assertThat(rule3(asList(2), 0), is(Optional.empty()));
+        assertThat(apply(rule3()).to(asList(2)).at(0), is(Optional.empty()));
     }
 
 
     @Test
     public void rule_3_cannot_access_a_nonexisting_index() {
-        assertThat(rule3(asList(2), 1), is(Optional.empty()));
+        assertThat(apply(rule3()).to(asList(2)).at(1), is(Optional.empty()));
     }
 
     @Test
     public void replace_rule_3() {
-        assertThat(rule3(asList(1, 6, 3), 1), is(Optional.of(asList(3, 3, 3))));
+        assertThat(apply(rule3()).to(asList(1, 6, 3)).at(1), is(Optional.of(asList(3, 3, 3))));
     }
 
     @Test
     public void replace_rule_3_cant_because_of_the_left() {
-        assertThat(rule3(asList(6), 0), is(Optional.empty()));
+        assertThat(apply(rule3()).to(asList(6)).at(0), is(Optional.empty()));
     }
 
     @Test
     public void replace_rule_3_cant_because_of_the_right() {
-        assertThat(rule3(asList(4, 6, 3, 4, 5), 1), is(Optional.empty()));
-        assertThat(rule3(asList(1, 6), 1), is(Optional.empty()));
-    }
-
-    private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
-        return apply(Rules.rule3()).to(integers).at(index);
+        assertThat(apply(rule3()).to(asList(4, 6, 3, 4, 5)).at(1), is(Optional.empty()));
+        assertThat(apply(rule3()).to(asList(1, 6)).at(1), is(Optional.empty()));
     }
 
 }
