@@ -2,13 +2,13 @@ package com.example.kata.test.unit;
 
 import com.example.kata.numerology.Elements;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
-import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 
+import static com.example.kata.test.unit.RuleCaseBuilder.apply;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -77,14 +77,14 @@ public class NumerologyShould {
     }
 
     private Optional<List<Integer>> rule1(List<Integer> input, int index) {
-        return new Rule9ForTwo10s().apply(new Elements(input), index);
+        return apply(Rules.rule1()).to(input).at(index);
     }
 
     private Optional<List<Integer>> rule2(List<Integer> input, int index) {
-        return new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft().apply(Elements.in(input), index);
+        return apply(new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft()).to(input).at(index);
     }
 
     private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
-        return new RuleReplace6ForAsMany3AsTheValueToTheNthRight().apply(Elements.in(integers), index);
+        return apply(new RuleReplace6ForAsMany3AsTheValueToTheNthRight()).to(integers).at(index);
     }
 }
