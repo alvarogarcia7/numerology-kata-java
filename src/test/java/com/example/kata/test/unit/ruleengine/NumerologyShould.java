@@ -2,13 +2,13 @@ package com.example.kata.test.unit.ruleengine;
 
 import com.example.kata.numerology.Numerology;
 import com.example.kata.numerology.Rule;
-import com.example.kata.test.helper.Rules;
 import org.junit.Test;
 
 import java.util.Collections;
 import java.util.List;
 
-import static com.example.kata.test.helper.Rules.*;
+import static com.example.kata.test.helper.Rules.contradiction;
+import static com.example.kata.test.helper.Rules.tautologyThatProduces;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
