@@ -11,11 +11,11 @@ public class Numerology {
         this.rules = rules;
     }
 
-    public List<Integer> replace(List<Integer> input) {
-        Elements elements = Elements.in(input);
-        return elements.flatMapWithIndex((Elements elements1, Integer index) -> Elements.in(Arrays
+    public List<Integer> replace(List<Integer> values) {
+        Elements input = Elements.in(values);
+        return input.flatMapWithIndex((Elements elements, Integer index) -> Elements.in(Arrays
                 .stream(rules)
-                .map(rule -> rule.apply(elements1, index))
+                .map(rule -> rule.apply(elements, index))
                 .filter(Optional::isPresent)
                 .findFirst()
                 .orElseGet(emptyList()).get()))
