@@ -26,7 +26,7 @@ public class Rules {
      * in this case, always applies
      *
      */
-    public static Rule tautologyRuleThatProduces(final List<Integer> value) {
+    public static Rule tautologyThatProduces(final List<Integer> value) {
         return (elements, index) -> Optional.of(value);
     }
 }

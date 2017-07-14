@@ -18,8 +18,8 @@ public class NumerologyShould {
     @Test
     public void apply_only_the_first_rule_that_matches() {
 
-        Rule tautology1 = Rules.tautologyRuleThatProduces(asList(1));
-        Rule tautology2 = Rules.tautologyRuleThatProduces(asList(2));
+        Rule tautology1 = Rules.tautologyThatProduces(asList(1));
+        Rule tautology2 = Rules.tautologyThatProduces(asList(2));
         Numerology numerology = new Numerology(tautology1, tautology2);
 
         List<Integer> result = numerology.replace(asList(9));
