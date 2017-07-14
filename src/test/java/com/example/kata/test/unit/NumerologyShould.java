@@ -32,17 +32,17 @@ public class NumerologyShould {
     //Rule number 2
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
-        assertThat(rule2(asList(8, 2), 1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
+        assertThat(apply(Rules.rule2()).to(asList(8, 2)).at(1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
     }
 
     @Test
     public void rule_2_cannot_access_a_nonexisting_index() {
-        assertThat(rule2(asList(2), 1), is(Optional.empty()));
+        assertThat(apply(Rules.rule2()).to(asList(2)).at(1), is(Optional.empty()));
     }
 
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
-        assertThat(rule2(asList(2), 0), is(Optional.empty()));
+        assertThat(apply(Rules.rule2()).to(asList(2)).at(0), is(Optional.empty()));
     }
 
 
@@ -72,10 +72,6 @@ public class NumerologyShould {
     public void replace_rule_3_cant_because_of_the_right() {
         assertThat(rule3(asList(4, 6, 3, 4, 5), 1), is(Optional.empty()));
         assertThat(rule3(asList(1, 6), 1), is(Optional.empty()));
-    }
-
-    private Optional<List<Integer>> rule2(List<Integer> input, int index) {
-        return apply(Rules.rule2()).to(input).at(index);
     }
 
     private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
