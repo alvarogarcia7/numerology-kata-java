@@ -87,6 +87,7 @@ public class NumerologyShould {
 
     @Test
     public void replace_rule_3_cant_because_of_the_right() {
+        assertThat(rule3(asList(4, 6), 1), is(Optional.empty()));
         assertThat(replaceOnlyWithThirdRule(asList(4, 6, 3, 4, 5)), is(asList(4, 6, 3, 4, 5)));
         assertThat(replaceOnlyWithThirdRule(asList(1, 6)), is(asList(1, 6)));
     }
