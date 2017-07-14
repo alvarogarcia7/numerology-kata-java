@@ -17,7 +17,9 @@ public class Numerology {
                 .stream(rules)
                 .map(rule -> rule.apply(elements1, index))
                 .filter(Optional::isPresent)
-                .findFirst().orElseGet(emptyList()).get())).toList();
+                .findFirst()
+                .orElseGet(emptyList()).get()))
+                .toList();
     }
 
     private Supplier<Optional<List<Integer>>> emptyList() {
