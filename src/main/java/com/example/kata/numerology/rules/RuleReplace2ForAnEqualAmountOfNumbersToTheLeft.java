@@ -1,4 +1,7 @@
-package com.example.kata.numerology;
+package com.example.kata.numerology.rules;
+
+import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.Rule;
 
 import java.util.List;
 import java.util.Optional;
