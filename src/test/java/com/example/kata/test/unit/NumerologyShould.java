@@ -26,6 +26,7 @@ public class NumerologyShould {
 
     @Test
     public void replace_multiple_nines_by_two_tens_each() {
+        //no need to test the rule here, as it is tested one by one
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 9)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10, 10)));
     }
