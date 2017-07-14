@@ -30,7 +30,7 @@ public class Rules {
         return (elements, index) -> Optional.of(value);
     }
 
-    public static Rule contradictionRule() {
+    public static Rule contradiction() {
         return (elements, index) -> Optional.empty();
     }
 }

@@ -29,7 +29,7 @@ public class NumerologyShould {
     @Test
     public void not_depend_on_having_a_catchall_rule() {
 
-        Rule contradiction = Rules.contradictionRule();
+        Rule contradiction = Rules.contradiction();
         Numerology numerology = new Numerology(contradiction);
 
         List<Integer> result = numerology.replace(asList(9));
