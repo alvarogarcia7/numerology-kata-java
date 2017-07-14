@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,16 +29,12 @@ public class NumerologyShould {
     @Test
     public void not_depend_on_having_a_catchall_rule() {
 
-        Rule contradiction = contradictionRule();
+        Rule contradiction = Rules.contradictionRule();
         Numerology numerology = new Numerology(contradiction);
 
         List<Integer> result = numerology.replace(asList(9));
 
         assertThat(result, is(Collections.emptyList()));
-    }
-
-    private Rule contradictionRule() {
-        return (elements, index) -> Optional.empty();
     }
 
 }

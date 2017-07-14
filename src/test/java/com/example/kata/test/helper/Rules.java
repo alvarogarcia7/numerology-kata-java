@@ -29,4 +29,8 @@ public class Rules {
     public static Rule tautologyThatProduces(final List<Integer> value) {
         return (elements, index) -> Optional.of(value);
     }
+
+    public static Rule contradictionRule() {
+        return (elements, index) -> Optional.empty();
+    }
 }
