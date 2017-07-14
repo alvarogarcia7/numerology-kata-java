@@ -1,4 +1,4 @@
-package com.example.kata.numerology.rules;
+package com.example.kata.test.unit;
 
 import org.junit.Test;
 
