@@ -1,4 +1,4 @@
-package com.example.kata.test.unit;
+package com.example.kata.test.unit.rule;
 
 import org.junit.Test;
 
