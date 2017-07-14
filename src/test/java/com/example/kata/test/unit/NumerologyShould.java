@@ -1,6 +1,5 @@
 package com.example.kata.test.unit;
 
-import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
 import org.junit.Test;
 
 import java.util.List;
@@ -83,6 +82,7 @@ public class NumerologyShould {
     }
 
     private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
-        return apply(new RuleReplace6ForAsMany3AsTheValueToTheNthRight()).to(integers).at(index);
+        return apply(Rules.rule3()).to(integers).at(index);
     }
+
 }
