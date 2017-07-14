@@ -19,6 +19,9 @@ public class Numerology {
                 .toList();
     }
 
+    /**
+     * @return an Elements as this function injects behavior to the Elements class. As such, this function must talk in the terms of the injectee class
+     */
     private Elements applyAllRules(Elements elements, Integer index) {
         return Elements.in(
                 stream(rules)
