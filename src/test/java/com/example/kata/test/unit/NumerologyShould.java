@@ -1,8 +1,6 @@
 package com.example.kata.test.unit;
 
 import com.example.kata.numerology.Elements;
-import com.example.kata.numerology.Numerology;
-import com.example.kata.numerology.RuleIdentity;
 import com.example.kata.numerology.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
