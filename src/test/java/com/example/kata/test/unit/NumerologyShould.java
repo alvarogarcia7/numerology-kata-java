@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.example.kata.test.unit.RuleCaseBuilder.apply;
+import static com.example.kata.test.unit.Rules.*;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -15,17 +16,17 @@ public class NumerologyShould {
     //Rule number 1
     @Test
     public void rule_1_cannot_access_a_nonexisting_index() {
-        assertThat(rule1(asList(2), 1), is(Optional.empty()));
+        assertThat(apply(rule1()).to(asList(2)).at(1), is(Optional.empty()));
     }
 
     @Test
     public void replace_a_single_nine_by_two_tens() {
-        assertThat(rule1(asList(9), 0), is(Optional.of(asList(10, 10))));
+        assertThat(apply(rule1()).to(asList(9)).at(0), is(Optional.of(asList(10, 10))));
     }
 
     @Test
     public void replace_no_nines_by_two_tens_each() {
-        assertThat(rule1(asList(1), 0), is(Optional.empty()));
+        assertThat(apply(rule1()).to(asList(1)).at(0), is(Optional.empty()));
     }
 
     //Rule number 2
@@ -71,10 +72,6 @@ public class NumerologyShould {
     public void replace_rule_3_cant_because_of_the_right() {
         assertThat(rule3(asList(4, 6, 3, 4, 5), 1), is(Optional.empty()));
         assertThat(rule3(asList(1, 6), 1), is(Optional.empty()));
-    }
-
-    private Optional<List<Integer>> rule1(List<Integer> input, int index) {
-        return apply(Rules.rule1()).to(input).at(index);
     }
 
     private Optional<List<Integer>> rule2(List<Integer> input, int index) {
