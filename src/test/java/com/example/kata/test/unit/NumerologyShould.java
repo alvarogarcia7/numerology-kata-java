@@ -58,6 +58,11 @@ public class NumerologyShould {
 
     //Rule number 3
     @Test
+    public void not_apply_rule_3_to_numbers_that_not_match_the_specification() {
+        assertThat(rule3(asList(2), 0), is(Optional.empty()));
+    }
+
+    @Test
     public void replace_rule_3() {
         assertThat(replaceOnlyWithThirdRule(asList(1, 6, 3, 4, 5)), is(asList(1, 3, 3, 3, 3, 4, 5)));
     }
@@ -97,12 +102,16 @@ public class NumerologyShould {
         return new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft().apply(Elements.in(input), index);
     }
 
-
     private List<Integer> replaceOnlyWithThirdRule(List<Integer> input) {
         return new Numerology(
                 new RuleReplace6ForAsMany3AsTheValueToTheNthRight(),
                 new RuleIdentity())
 
                 .replace(input);
+    }
+
+
+    private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
+        return new RuleReplace6ForAsMany3AsTheValueToTheNthRight().apply(Elements.in(integers), index);
     }
 }
