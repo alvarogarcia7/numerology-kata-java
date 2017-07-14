@@ -17,8 +17,8 @@ public class NumerologyShould {
     @Test
     public void apply_only_the_first_rule_that_matches() {
 
-        Rule tautology1 = tautologyRule(asList(1));
-        Rule tautology2 = tautologyRule(asList(2));
+        Rule tautology1 = tautologyRuleThatProduces(asList(1));
+        Rule tautology2 = tautologyRuleThatProduces(asList(2));
         Numerology numerology = new Numerology(tautology1, tautology2);
 
         List<Integer> result = numerology.replace(asList(9));
@@ -31,7 +31,7 @@ public class NumerologyShould {
      * in this case, always applies
      *
      */
-    private Rule tautologyRule(final List<Integer> value) {
+    private Rule tautologyRuleThatProduces(final List<Integer> value) {
         Rule tautologyRule1 = new Rule() {
             @Override
             public Optional<List<Integer>> apply(Elements elements, int index) {
