@@ -19,8 +19,13 @@ public class NumerologyShould {
 
     //Rule number 1
     @Test
+    public void rule_1_cannot_access_a_nonexisting_index() {
+        assertThat(rule1(asList(2), 1), is(Optional.empty()));
+    }
+
+    @Test
     public void replace_a_single_nine_by_two_tens() {
-        assertThat(rule1(asList(9)), is(Optional.of(asList(10, 10))));
+        assertThat(rule1(asList(9), 0), is(Optional.of(asList(10, 10))));
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
     }
 
@@ -33,7 +38,7 @@ public class NumerologyShould {
 
     @Test
     public void replace_no_nines_by_two_tens_each() {
-        assertThat(rule1(asList(1)), is(Optional.empty()));
+        assertThat(rule1(asList(1), 0), is(Optional.empty()));
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8)), is(asList(1, 2, 3, 4, 5, 7, 8)));
     }
 
@@ -92,8 +97,8 @@ public class NumerologyShould {
                 .replace(input);
     }
 
-    private Optional<List<Integer>> rule1(List<Integer> input) {
-        return new Rule9ForTwo10s().apply(new Elements(input), 0);
+    private Optional<List<Integer>> rule1(List<Integer> input, int index) {
+        return new Rule9ForTwo10s().apply(new Elements(input), index);
     }
 
     private List<Integer> replaceOnlyWithFirstRule(List<Integer> input) {

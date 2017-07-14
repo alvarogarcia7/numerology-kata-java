@@ -9,6 +9,9 @@ import java.util.Optional;
 
 public class Rule9ForTwo10s implements Rule {
     public Optional<List<Integer>> apply(Elements elements, int index) {
+        if (!elements.exists(index)) {
+            return Optional.empty();
+        }
         Integer integer = elements.at(index);
         if (integer.equals(9)) {
             return Optional.of(Arrays.asList(10, 10));
