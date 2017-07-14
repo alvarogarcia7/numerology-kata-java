@@ -40,14 +40,15 @@ public class NumerologyShould {
     //Rule number 2
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
+        assertThat(rule2(asList(8, 2), 1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
         assertThat(replaceOnlyWithSecondRule(asList(8, 2, 9)), is(asList(8, 1, 1, 1, 1, 1, 1, 1, 1, 9)));
     }
-
 
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
         assertThat(replaceOnlyWithSecondRule(asList(2)), is(asList(2)));
     }
+
 
     //Rule number 3
     @Test
@@ -84,6 +85,10 @@ public class NumerologyShould {
                 new RuleIdentity())
 
                 .replace(input);
+    }
+
+    private Optional<List<Integer>> rule2(List<Integer> input, int index) {
+        return new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft().apply(Elements.in(input), index);
     }
 
 
