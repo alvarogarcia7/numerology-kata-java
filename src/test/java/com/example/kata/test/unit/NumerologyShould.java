@@ -1,5 +1,6 @@
 package com.example.kata.test.unit;
 
+import com.example.kata.numerology.Elements;
 import com.example.kata.numerology.Numerology;
 import com.example.kata.numerology.RuleIdentity;
 import com.example.kata.numerology.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
@@ -8,6 +9,7 @@ import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNt
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,6 +20,7 @@ public class NumerologyShould {
     //Rule number 1
     @Test
     public void replace_a_single_nine_by_two_tens() {
+        assertThat(rule1(asList(1)), is(Optional.empty()));
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
     }
 
@@ -32,12 +35,12 @@ public class NumerologyShould {
         assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8)), is(asList(1, 2, 3, 4, 5, 7, 8)));
     }
 
-
     //Rule number 2
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
         assertThat(replaceOnlyWithSecondRule(asList(8, 2, 9)), is(asList(8, 1, 1, 1, 1, 1, 1, 1, 1, 9)));
     }
+
 
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
@@ -67,6 +70,10 @@ public class NumerologyShould {
                 new RuleIdentity())
 
                 .replace(input);
+    }
+
+    private Optional<List<Integer>> rule1(List<Integer> input) {
+        return new Rule9ForTwo10s().apply(new Elements(input), 0);
     }
 
     private List<Integer> replaceOnlyWithFirstRule(List<Integer> input) {
