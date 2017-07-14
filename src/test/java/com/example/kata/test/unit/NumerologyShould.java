@@ -1,7 +1,5 @@
 package com.example.kata.test.unit;
 
-import com.example.kata.numerology.Elements;
-import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
 import org.junit.Test;
 
@@ -81,7 +79,7 @@ public class NumerologyShould {
     }
 
     private Optional<List<Integer>> rule2(List<Integer> input, int index) {
-        return apply(new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft()).to(input).at(index);
+        return apply(Rules.rule2()).to(input).at(index);
     }
 
     private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
