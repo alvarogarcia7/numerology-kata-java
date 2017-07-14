@@ -50,8 +50,7 @@ public class NumerologyShould {
      *
      */
     private Rule tautologyRuleThatProduces(final List<Integer> value) {
-        Rule tautologyRule1 = (elements, index) -> Optional.of(value);
-        return tautologyRule1;
+        return (elements, index) -> Optional.of(value);
     }
 
 }
