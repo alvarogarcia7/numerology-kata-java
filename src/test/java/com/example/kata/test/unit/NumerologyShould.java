@@ -12,22 +12,6 @@ import static org.hamcrest.Matchers.is;
 
 public class NumerologyShould {
 
-    //Rule number 2
-    @Test
-    public void replace_the_number_previous_to_a_2_for_as_many_ones() {
-        assertThat(apply(rule2()).to(asList(8, 2)).at(1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
-    }
-
-    @Test
-    public void rule_2_cannot_access_a_nonexisting_index() {
-        assertThat(apply(rule2()).to(asList(2)).at(1), is(Optional.empty()));
-    }
-
-    @Test
-    public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
-        assertThat(apply(rule2()).to(asList(2)).at(0), is(Optional.empty()));
-    }
-
 
     //Rule number 3
     @Test

@@ -10,7 +10,7 @@ public class Rules {
         return new Rule9ForTwo10s();
     }
 
-    static RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2() {
+    public static RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2() {
         return new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft();
     }
 
