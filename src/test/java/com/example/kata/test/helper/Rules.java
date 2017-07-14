@@ -5,6 +5,9 @@ import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
 
+import java.util.List;
+import java.util.Optional;
+
 public class Rules {
     public static Rule rule1() {
         return new Rule9ForTwo10s();
@@ -16,5 +19,14 @@ public class Rules {
 
     public static RuleReplace6ForAsMany3AsTheValueToTheNthRight rule3() {
         return new RuleReplace6ForAsMany3AsTheValueToTheNthRight();
+    }
+
+    /**
+     * Tautology = always is true
+     * in this case, always applies
+     *
+     */
+    public static Rule tautologyRuleThatProduces(final List<Integer> value) {
+        return (elements, index) -> Optional.of(value);
     }
 }
