@@ -78,38 +78,13 @@ public class NumerologyShould {
         assertThat(rule3(asList(1, 6), 1), is(Optional.empty()));
     }
 
-    private List<Integer> replaceOnlyWithSecondRule(List<Integer> input) {
-        return new Numerology(
-                new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft(),
-                new RuleIdentity())
-
-                .replace(input);
-    }
-
     private Optional<List<Integer>> rule1(List<Integer> input, int index) {
         return new Rule9ForTwo10s().apply(new Elements(input), index);
-    }
-
-    private List<Integer> replaceOnlyWithFirstRule(List<Integer> input) {
-        return new Numerology(
-                new Rule9ForTwo10s(),
-                new RuleIdentity())
-
-                .replace(input);
     }
 
     private Optional<List<Integer>> rule2(List<Integer> input, int index) {
         return new RuleReplace2ForAnEqualAmountOfNumbersToTheLeft().apply(Elements.in(input), index);
     }
-
-    private List<Integer> replaceOnlyWithThirdRule(List<Integer> input) {
-        return new Numerology(
-                new RuleReplace6ForAsMany3AsTheValueToTheNthRight(),
-                new RuleIdentity())
-
-                .replace(input);
-    }
-
 
     private Optional<List<Integer>> rule3(List<Integer> integers, int index) {
         return new RuleReplace6ForAsMany3AsTheValueToTheNthRight().apply(Elements.in(integers), index);
