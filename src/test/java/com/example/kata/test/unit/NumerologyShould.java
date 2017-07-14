@@ -26,27 +26,17 @@ public class NumerologyShould {
     @Test
     public void replace_a_single_nine_by_two_tens() {
         assertThat(rule1(asList(9), 0), is(Optional.of(asList(10, 10))));
-        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
-    }
-
-    @Test
-    public void replace_multiple_nines_by_two_tens_each() {
-        //no need to test the rule here, as it is tested one by one
-        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 10)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10)));
-        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8, 9, 9)), is(asList(1, 2, 3, 4, 5, 7, 8, 10, 10, 10, 10)));
     }
 
     @Test
     public void replace_no_nines_by_two_tens_each() {
         assertThat(rule1(asList(1), 0), is(Optional.empty()));
-        assertThat(replaceOnlyWithFirstRule(asList(1, 2, 3, 4, 5, 7, 8)), is(asList(1, 2, 3, 4, 5, 7, 8)));
     }
 
     //Rule number 2
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones() {
         assertThat(rule2(asList(8, 2), 1), is(Optional.of(asList(1, 1, 1, 1, 1, 1, 1, 1))));
-        assertThat(replaceOnlyWithSecondRule(asList(8, 2, 9)), is(asList(8, 1, 1, 1, 1, 1, 1, 1, 1, 9)));
     }
 
     @Test
@@ -57,7 +47,6 @@ public class NumerologyShould {
     @Test
     public void replace_the_number_previous_to_a_2_for_as_many_ones_but_its_not_possible() {
         assertThat(rule2(asList(2), 0), is(Optional.empty()));
-        assertThat(replaceOnlyWithSecondRule(asList(2)), is(asList(2)));
     }
 
 
@@ -76,21 +65,17 @@ public class NumerologyShould {
     @Test
     public void replace_rule_3() {
         assertThat(rule3(asList(1, 6, 3), 1), is(Optional.of(asList(3, 3, 3))));
-        assertThat(replaceOnlyWithThirdRule(asList(1, 6, 3, 4, 5)), is(asList(1, 3, 3, 3, 3, 4, 5)));
     }
 
     @Test
     public void replace_rule_3_cant_because_of_the_left() {
         assertThat(rule3(asList(6), 0), is(Optional.empty()));
-        assertThat(replaceOnlyWithThirdRule(asList(6, 3, 4, 5)), is(asList(6, 3, 4, 5)));
     }
 
     @Test
     public void replace_rule_3_cant_because_of_the_right() {
         assertThat(rule3(asList(4, 6, 3, 4, 5), 1), is(Optional.empty()));
-        assertThat(replaceOnlyWithThirdRule(asList(4, 6, 3, 4, 5)), is(asList(4, 6, 3, 4, 5)));
         assertThat(rule3(asList(1, 6), 1), is(Optional.empty()));
-        assertThat(replaceOnlyWithThirdRule(asList(1, 6)), is(asList(1, 6)));
     }
 
     private List<Integer> replaceOnlyWithSecondRule(List<Integer> input) {
