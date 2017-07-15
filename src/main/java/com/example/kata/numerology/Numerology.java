@@ -15,7 +15,8 @@ public class Numerology {
 
     public List<Integer> replace(List<Integer> values) {
         return Elements.in(values)
-                .flatMapWithIndex(ruleEngine::applyAllRules)
+                .withIndex()
+                .flatMap(ruleEngine::applyAllRules)
                 .toList();
     }
 

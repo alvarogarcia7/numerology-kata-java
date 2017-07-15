@@ -1,8 +1,6 @@
 package com.example.kata.numerology;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiFunction;
 
 public class Elements {
@@ -28,15 +26,15 @@ public class Elements {
         return values.get(index - 1);
     }
 
-    public Elements flatMapWithIndex(BiFunction<Elements, Integer, Elements> mapper) {
-        Elements result = new Elements(new ArrayList<>());
+    public ElementsWithIndex withIndex() {
+        Map<Integer, Integer> values = new HashMap<>();
         for (int i = 0; i < values.size(); i++) {
-            result = result.append(mapper.apply(this, i));
+            values.put(i, values.get(i));
         }
-        return result;
+        return ElementsWithIndex.of(values);
     }
 
-    private Elements append(Elements elements) {
+    protected Elements append(Elements elements) {
         List<Integer> integers = new ArrayList<>(this.values);
         integers.addAll(elements.values);
         return new Elements(integers);

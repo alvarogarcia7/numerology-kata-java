@@ -1,6 +1,7 @@
 package com.example.kata.numerology.ruleengine;
 
 import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.ElementsWithIndex;
 import com.example.kata.numerology.Numerology;
 import com.example.kata.numerology.rules.Rule;
 import io.vavr.control.Option;
@@ -23,10 +24,10 @@ public class RuleEngine {
      * @param elements
      * @param index
      */
-    public Elements applyAllRules(Elements elements, Integer index) {
+    public Elements applyAllRules(ElementsWithIndex elements, Integer index) {
         return Elements.in(
                 stream(rules)
-                .map(rule -> rule.apply(elements, index))
+                .map(rule -> rule.apply(elements.noIndex(), index))
                 .filter(Option::isDefined)
                 .findFirst()
                 .orElse(emptyList()).get());
