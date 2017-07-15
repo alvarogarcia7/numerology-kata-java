@@ -13,7 +13,6 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
     private final Rule withinBounds = new WithinBoundsRule();
     private final Rule equalityTo = new EqualityToRule(6);
-    private final Rule hasPrevious = new HasPreviousElementRule();
     private Selector previousSelector = new PreviousSelector();
     private AtADistanceSelectorFactory atADistanceSelectorFactory = AtADistanceSelector.factory();
 
@@ -22,15 +21,10 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
     public Option<List<Integer>> apply(Elements elements, int i) {
         return withinBounds.apply(elements, i)
                 .flatMap(r -> equalityTo.apply(elements, i)
-                        .flatMap(r2 -> hasPrevious.apply(elements, i)
-                                .flatMap(r3b -> {
-                                    Option<Integer> previous = previousSelector.apply(elements, i);
-
-                                    Integer distance = elements.at(i - 1);
-                                    Selector selector = atADistanceSelectorFactory.aNew(distance);
-                                    Option<Integer> repeat = selector.apply(elements, i);
-                                    return previous
-                                            .flatMap(previous1 -> repeat.flatMap(numberOfTimes -> insert3s(numberOfTimes, i, elements)));
+                        .flatMap(r2 -> previousSelector.apply(elements, i)
+                                .flatMap(previous -> {
+                                    Option<Integer> times = atADistanceSelectorFactory.aNew(previous).apply(elements, i);
+                                    return times.flatMap(numberOfTimes -> insert3s(numberOfTimes, i, elements));
                                 })));
     }
 
