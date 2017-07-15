@@ -10,8 +10,8 @@ class AtADistanceSelector extends Selector {
         this.distance = distance;
     }
 
-    public static AtADistanceSelector aNew(Integer distance) {
-        return new AtADistanceSelector(distance);
+    public static AtADistanceSelectorFactory factory(){
+        return new AtADistanceSelectorFactory();
     }
 
     @Override
@@ -20,5 +20,11 @@ class AtADistanceSelector extends Selector {
             return Option.of(elements.at(index + distance));
         }
         return Option.none();
+    }
+
+    static class AtADistanceSelectorFactory {
+        public AtADistanceSelector aNew(Integer distance) {
+            return new AtADistanceSelector(distance);
+        }
     }
 }
