@@ -36,12 +36,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
     }
 
     private Option<List<Integer>> insert3s(Integer numberOfTimes, int index, Elements elements) {
-        return new Rule() {
-            @Override
-            public Option<List<Integer>> apply(Elements elements, int index) {
-                return Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()));
-            }
-        }.apply(elements, index);
+        return ((Rule) (elements1, index1) -> Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()))).apply(elements, index);
     }
 
 }
