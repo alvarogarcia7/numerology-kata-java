@@ -9,9 +9,20 @@ import java.util.List;
 public class HasPreviousElementRule implements Rule {
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
-        if (elements.exists(index - 1)) {
-            return Option.of(elements.toList());
-        }
-        return Option.none();
+        return new WithinBoundsRule().apply(elements, index).flatMap(r -> {
+            if (elements.exists(index - 1)) {
+                return Option.of(elements.toList());
+            }
+            return Option.none();
+        });
+    }
+
+    public static Rule atADistanceOf(Integer distance) {
+        return (elements, index) -> new WithinBoundsRule().apply(elements, index).flatMap(r-> {
+            if (elements.exists(index - distance)) {
+                return Option.of(elements.toList());
+            }
+            return Option.none();
+        });
     }
 }
