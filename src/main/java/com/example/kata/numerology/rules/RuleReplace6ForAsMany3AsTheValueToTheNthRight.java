@@ -6,9 +6,6 @@ import com.example.kata.numerology.rules.AtADistanceSelector.AtADistanceSelector
 import io.vavr.control.Option;
 
 import java.util.List;
-import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toList;
 
 public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
@@ -39,16 +36,4 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
         return new Insert3sRule(numberOfTimes).apply(elements, index);
     }
 
-    private static class Insert3sRule implements Rule {
-        private final Integer numberOfTimes;
-
-        public Insert3sRule(Integer numberOfTimes) {
-            this.numberOfTimes = numberOfTimes;
-        }
-
-        @Override
-        public Option<List<Integer>> apply(Elements elements, int index) {
-            return Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()));
-        }
-    }
 }
