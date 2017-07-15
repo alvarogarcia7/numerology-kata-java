@@ -15,8 +15,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int i) {
-        Option<List<Integer>> apply = withinBounds.apply(elements, i);
-        return apply.flatMap(r -> {
+        return withinBounds.apply(elements, i).flatMap(r -> {
             Integer integer = elements.at(i);
             if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(elements, i + previous(elements, i))) {
                 Integer previous = elements.previousOf(i);
