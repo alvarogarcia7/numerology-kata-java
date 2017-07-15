@@ -15,6 +15,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
     private final Rule equalityTo = new EqualityToRule(6);
     private final Rule hasPrevious = new HasPreviousElementRule();
     private Selector previousSelector = new PreviousSelector();
+    private Selector atADistanceSelector;
 
 
     @Override
@@ -26,10 +27,14 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
                                     Option<Integer> previous = previousSelector.apply(elements, i);
 
                                     Integer distance = elements.at(i - 1);
-                                    Selector selector = AtADistanceSelector.aNew(distance);
-                                    Option<Integer> repeat = selector.apply(elements, i);
+                                    atADistanceSelector = getSelectorAtA(distance);
+                                    Option<Integer> repeat = atADistanceSelector.apply(elements, i);
                                     return previous.flatMap(previous1 -> repeat.flatMap(numberOfTimes -> Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()))));
                                 })));
+    }
+
+    private AtADistanceSelector getSelectorAtA(Integer distance) {
+        return AtADistanceSelector.aNew(distance);
     }
 
 }
