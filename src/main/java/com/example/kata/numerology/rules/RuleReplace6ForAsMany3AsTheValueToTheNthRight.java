@@ -11,18 +11,20 @@ import static java.util.stream.Collectors.toList;
 
 public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
+    private final Rule withinBounds = new WithinBoundsRule();
+
     @Override
     public Option<List<Integer>> apply(Elements elements, int i) {
-        if (!elements.exists(i)) {
+        Option<List<Integer>> apply = withinBounds.apply(elements, i);
+        return apply.flatMap(r -> {
+            Integer integer = elements.at(i);
+            if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(elements, i + previous(elements, i))) {
+                Integer previous = elements.previousOf(i);
+                int numberOfTimes = elements.at(previous + i);
+                return Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()));
+            }
             return Option.none();
-        }
-        Integer integer = elements.at(i);
-        if (integer.equals(6) && (elements.exists(i - 1)) && elementExists(elements, i + previous(elements, i))) {
-            Integer previous = elements.previousOf(i);
-            int numberOfTimes = elements.at(previous + i);
-            return Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()));
-        }
-        return Option.none();
+        });
 
     }
 
