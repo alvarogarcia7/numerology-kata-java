@@ -13,6 +13,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
     private final Rule withinBounds = new WithinBoundsRule();
     private final Rule equalityTo = new EqualityToRule(6);
+    private final Rule hasPrevious = new HasPreviousElementRule();
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int i) {
@@ -20,14 +21,14 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
                 .apply(elements, i)
                 .flatMap(r -> equalityTo
                         .apply(elements, i)
-                        .flatMap(r2 -> {
-                            if ((elements.exists(i - 1)) && elementExists(elements, i + previous(elements, i))) {
+                        .flatMap(r2 -> hasPrevious.apply(elements, i).flatMap(r3 -> {
+                            if (elementExists(elements, i + previous(elements, i))) {
                                 Integer previous = elements.previousOf(i);
                                 int numberOfTimes = elements.at(previous + i);
                                 return Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()));
                             }
                             return Option.none();
-                        }));
+                        })));
 
     }
 
