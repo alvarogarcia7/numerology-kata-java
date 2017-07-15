@@ -16,12 +16,4 @@ public class HasPreviousElementRule implements Rule {
         });
     }
 
-    public static Rule atADistanceOf(Integer distance) {
-        return (elements, index) -> new WithinBoundsRule().apply(elements, index).flatMap(r-> {
-            if (elements.exists(index - distance)) {
-                return Option.of(elements.toList());
-            }
-            return Option.none();
-        });
-    }
 }
