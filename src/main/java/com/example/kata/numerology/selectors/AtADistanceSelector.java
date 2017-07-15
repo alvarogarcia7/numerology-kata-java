@@ -1,9 +1,9 @@
-package com.example.kata.numerology.rules;
+package com.example.kata.numerology.selectors;
 
 import com.example.kata.numerology.Elements;
 import io.vavr.control.Option;
 
-class AtADistanceSelector extends Selector {
+public class AtADistanceSelector extends Selector {
     private final Integer distance;
 
     private AtADistanceSelector(Integer distance) {
@@ -22,7 +22,7 @@ class AtADistanceSelector extends Selector {
         return Option.none();
     }
 
-    static class AtADistanceSelectorFactory {
+    public static class AtADistanceSelectorFactory {
         public AtADistanceSelector aNew(Integer distance) {
             return new AtADistanceSelector(distance);
         }

@@ -1,4 +1,4 @@
-package com.example.kata.numerology.rules;
+package com.example.kata.numerology.selectors;
 
 import com.example.kata.numerology.Elements;
 import io.vavr.control.Option;

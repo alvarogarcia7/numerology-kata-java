@@ -2,7 +2,10 @@ package com.example.kata.numerology.rules;
 
 import com.example.kata.numerology.Elements;
 import com.example.kata.numerology.Rule;
-import com.example.kata.numerology.rules.AtADistanceSelector.AtADistanceSelectorFactory;
+import com.example.kata.numerology.selectors.AtADistanceSelector;
+import com.example.kata.numerology.selectors.AtADistanceSelector.AtADistanceSelectorFactory;
+import com.example.kata.numerology.selectors.PreviousSelector;
+import com.example.kata.numerology.selectors.Selector;
 import io.vavr.control.Option;
 
 import java.util.List;

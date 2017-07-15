@@ -1,7 +1,8 @@
-package com.example.kata.numerology.rules;
+package com.example.kata.numerology.selectors;
 
 
 import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.selectors.Selector;
 import io.vavr.control.Option;
 
 public class PreviousSelector extends Selector {
