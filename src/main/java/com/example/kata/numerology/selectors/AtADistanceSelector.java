@@ -16,8 +16,9 @@ public class AtADistanceSelector extends Selector {
 
     @Override
     public Option<Integer> apply(Elements elements, int index) {
-        if (elements.exists(index + distance)) {
-            return Option.of(elements.at(index + distance));
+        int desiredIndex = index + distance;
+        if (elements.exists(desiredIndex)) {
+            return Option.of(elements.at(desiredIndex));
         }
         return Option.none();
     }
