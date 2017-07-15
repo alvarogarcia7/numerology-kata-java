@@ -31,8 +31,12 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
                                     Selector selector = atADistanceSelectorFactory.aNew(distance);
                                     Option<Integer> repeat = selector.apply(elements, i);
                                     return previous
-                                            .flatMap(previous1 -> repeat.flatMap(numberOfTimes -> Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()))));
+                                            .flatMap(previous1 -> repeat.flatMap(numberOfTimes -> insert3s(numberOfTimes)));
                                 })));
+    }
+
+    private Option<List<Integer>> insert3s(Integer numberOfTimes) {
+        return Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()));
     }
 
 }
