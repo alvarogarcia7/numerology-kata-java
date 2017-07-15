@@ -26,7 +26,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
                                     Option<Integer> previous = selector.apply(elements, i);
 
                                     Integer distance = elements.at(i - 1);
-                                    Selector selector = new AtADistanceSelector(distance);
+                                    Selector selector = AtADistanceSelector.aNew(distance);
                                     Option<Integer> repeat = selector.apply(elements, i);
                                     return previous.flatMap(previous1 -> repeat.flatMap(numberOfTimes -> Option.of(IntStream.rangeClosed(1, numberOfTimes).map((x) -> 3).boxed().collect(toList()))));
                                 })));

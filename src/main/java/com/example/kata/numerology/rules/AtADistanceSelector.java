@@ -6,8 +6,12 @@ import io.vavr.control.Option;
 class AtADistanceSelector extends Selector {
     private final Integer distance;
 
-    public AtADistanceSelector(Integer distance) {
+    private AtADistanceSelector(Integer distance) {
         this.distance = distance;
+    }
+
+    public static AtADistanceSelector aNew(Integer distance) {
+        return new AtADistanceSelector(distance);
     }
 
     @Override
