@@ -1,7 +1,7 @@
 package com.example.kata.numerology;
 
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.numerology.rules.RuleEngine;
+import com.example.kata.numerology.ruleengine.RuleEngine;
 
 import java.util.List;
 
