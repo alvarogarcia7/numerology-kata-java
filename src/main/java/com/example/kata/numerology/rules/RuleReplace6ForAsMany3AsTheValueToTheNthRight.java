@@ -1,7 +1,6 @@
 package com.example.kata.numerology.rules;
 
 import com.example.kata.numerology.Elements;
-import com.example.kata.numerology.Rule;
 import com.example.kata.numerology.selectors.AtADistanceSelector;
 import com.example.kata.numerology.selectors.AtADistanceSelector.AtADistanceSelectorFactory;
 import com.example.kata.numerology.selectors.PreviousSelector;

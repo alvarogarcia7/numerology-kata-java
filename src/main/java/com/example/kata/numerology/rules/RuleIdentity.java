@@ -1,5 +1,7 @@
-package com.example.kata.numerology;
+package com.example.kata.numerology.rules;
 
+import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.rules.Rule;
 import io.vavr.control.Option;
 
 import java.util.List;

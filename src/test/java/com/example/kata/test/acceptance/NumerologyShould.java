@@ -1,7 +1,7 @@
 package com.example.kata.test.acceptance;
 
 import com.example.kata.numerology.Numerology;
-import com.example.kata.numerology.RuleIdentity;
+import com.example.kata.numerology.rules.RuleIdentity;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;

@@ -1,6 +1,6 @@
 package com.example.kata.test.helper;
 
-import com.example.kata.numerology.Rule;
+import com.example.kata.numerology.rules.Rule;
 import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
