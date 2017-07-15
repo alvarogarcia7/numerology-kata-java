@@ -14,7 +14,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
     private final Rule withinBounds = new WithinBoundsRule();
     private final Rule equalityTo = new EqualityToRule(6);
     private final Rule hasPrevious = new HasPreviousElementRule();
-    private Selector selector = new PreviousSelector();
+    private Selector previousSelector = new PreviousSelector();
 
 
     @Override
@@ -23,7 +23,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
                 .flatMap(r -> equalityTo.apply(elements, i)
                         .flatMap(r2 -> hasPrevious.apply(elements, i)
                                 .flatMap(r3b -> {
-                                    Option<Integer> previous = selector.apply(elements, i);
+                                    Option<Integer> previous = previousSelector.apply(elements, i);
 
                                     Integer distance = elements.at(i - 1);
                                     Selector selector = AtADistanceSelector.aNew(distance);
