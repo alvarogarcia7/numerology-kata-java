@@ -20,8 +20,7 @@ public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
     public Option<List<Integer>> apply(Elements elements, int i) {
         return withinBounds
                 .apply(elements, i)
-                .flatMap(r -> equalityTo
-                        .apply(elements, i)
+                .flatMap(r -> equalityTo.apply(elements, i)
                         .flatMap(r2 -> hasPrevious.apply(elements, i)
                                 .flatMap(r3b -> withinBounds.apply(elements, i - 1))
                                 .flatMap(r3 -> withinBounds.apply(elements, elements.at(i - 1)))
