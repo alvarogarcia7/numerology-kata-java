@@ -29,10 +29,10 @@ public class RuleEngine {
                 .map(rule -> rule.apply(elements, index))
                 .filter(Option::isDefined)
                 .findFirst()
-                .orElseGet(emptyList()).get());
+                .orElse(emptyList()).get());
     }
 
-    private Supplier<Option<List<Integer>>> emptyList() {
-        return () -> Option.of(Collections.emptyList());
+    private Option<List<Integer>> emptyList() {
+        return Option.of(Collections.emptyList());
     }
 }
