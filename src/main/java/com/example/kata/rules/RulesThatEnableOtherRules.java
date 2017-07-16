@@ -36,14 +36,14 @@ public class RulesThatEnableOtherRules implements Rule {
                 .orElse(gasConsumingRule2.apply(elements, index));
     }
 
-    RefuelingScheme alternatingRefuelingScheme(GasConsumingRule gasConsumingRule1, GasConsumingRule gasConsumingRule2) {
+    RefuelingScheme alternatingRefuelingScheme(GasConsumingRule rule1, GasConsumingRule rule2) {
         Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
-            if(gasConsumingRule2.equals(gasConsumingRule)){
-                gasConsumingRule2.consumeGas();
-                gasConsumingRule1.refuel();
-            } else if(gasConsumingRule1.equals(gasConsumingRule)) {
-                gasConsumingRule2.refuel();
-                gasConsumingRule1.consumeGas();
+            if(rule2.equals(gasConsumingRule)){
+                rule2.consumeGas();
+                rule1.refuel();
+            } else if(rule1.equals(gasConsumingRule)) {
+                rule2.refuel();
+                rule1.consumeGas();
             }
         };
         return new RefuelingScheme(gasConsumingRuleGasConsumingRuleFunction);
