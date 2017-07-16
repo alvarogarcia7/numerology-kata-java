@@ -29,7 +29,7 @@ public class RuleComposeRulesThatEnableOtherRulesShould {
     }
 
     @Test
-    public void do_not_apply_rules_without_gas_x() {
+    public void do_not_apply_rules_without_gas_another_case() {
         assertThat(apply(rule()).to(asList(0, 0, 0)).at(2), is(Option.none()));
     }
 
