@@ -6,7 +6,7 @@ import io.vavr.control.Option;
 
 import java.util.List;
 
-public class GasConsumingRule {
+public class GasConsumingRule implements Rule {
     private final Rule rule;
     private int availableGas;
 
@@ -27,6 +27,7 @@ public class GasConsumingRule {
         return availableGas > 0;
     }
 
+    @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         if (hasGas()) {
             return rule.apply(elements, index);
