@@ -34,4 +34,19 @@ public class GasConsumingRule implements Rule {
         }
         return Option.none();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GasConsumingRule that = (GasConsumingRule) o;
+
+        return rule != null ? rule.equals(that.rule) : that.rule == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return rule != null ? rule.hashCode() : 0;
+    }
 }
