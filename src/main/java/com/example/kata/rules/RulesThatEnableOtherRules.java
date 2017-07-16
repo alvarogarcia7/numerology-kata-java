@@ -30,12 +30,12 @@ public class RulesThatEnableOtherRules implements Rule {
                 continue;
             }
         }
-        
+
         if (gasConsumingRule1.apply(elements, index).isDefined()) {
-            return gasConsumingRule1.apply(elements, index).get();
+            return gasConsumingRule1.apply(elements, index);
         }
         if (gasConsumingRule2.apply(elements, index).isDefined()) {
-            return gasConsumingRule2.apply(elements, index).get();
+            return gasConsumingRule2.apply(elements, index);
         }
 
         return Option.none();

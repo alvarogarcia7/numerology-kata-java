@@ -27,9 +27,9 @@ public class GasConsumingRule {
         return availableGas > 0;
     }
 
-    public Option<Option<List<Integer>>> apply(Elements elements, int index) {
+    public Option<List<Integer>> apply(Elements elements, int index) {
         if (hasGas()) {
-            return Option.of(rule.apply(elements, index));
+            return rule.apply(elements, index);
         }
         return Option.none();
     }
