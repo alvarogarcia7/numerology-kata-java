@@ -1,6 +1,7 @@
 package com.example.kata.test.unit.rule;
 
 import com.example.kata.numerology.rules.Rule;
+import com.example.kata.rules.LimitedGasRule;
 import com.example.kata.rules.RulesThatEnableOtherRules;
 import com.example.kata.test.helper.Rules;
 import io.vavr.control.Option;
@@ -33,8 +34,22 @@ public class RuleComposeRulesThatEnableOtherRulesShould {
         assertThat(apply(rule()).to(asList(0, 0, 0)).at(2), is(Option.none()));
     }
 
+    @Test
+    public void do_apply_the_rule_as_it_doesnot_have_a_limit() {
+        assertThat(apply(rule()).to(asList(0, 1, 0)).at(2), is(Option.of(asList(1))));
+    }
+
+    @Test
+    public void do_not_apply_the_rule_when_it_has_reached_its_maximum_consumed_gas_amount() {
+        assertThat(apply(limitedGasrule()).to(asList(0, 1, 0)).at(2), is(Option.none()));
+    }
+    
     private Rule rule() {
         return new RulesThatEnableOtherRules(Rules.replacement(0, 1), Rules.replacement(1, 2));
+    }
+
+    private Rule limitedGasrule() {
+        return new RulesThatEnableOtherRules(new LimitedGasRule(Rules.replacement(0, 1), 1,1), new LimitedGasRule(Rules.replacement(1, 2), 1, 1));
     }
 
 

@@ -27,11 +27,11 @@ public class GasConsumingRule implements Rule {
         return Option.none();
     }
 
-    void refuel() {
+    protected void refuel() {
         availableGas += 1;
     }
 
-    private void consumeGas() {
+    protected void consumeGas() {
         availableGas -= 1;
     }
 
