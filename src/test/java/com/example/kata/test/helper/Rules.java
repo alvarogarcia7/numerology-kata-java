@@ -4,6 +4,7 @@ import com.example.kata.numerology.rules.Rule;
 import com.example.kata.numerology.rules.Rule9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
+import com.example.kata.rules.RuleReplaceA3ByA5UnlessNextIsA5;
 import io.vavr.control.Option;
 
 import java.util.List;
@@ -36,5 +37,9 @@ public class Rules {
      */
     public static Rule contradiction() {
         return (elements, index) -> Option.none();
+    }
+
+    public static Rule rule4() {
+        return new RuleReplaceA3ByA5UnlessNextIsA5();
     }
 }
