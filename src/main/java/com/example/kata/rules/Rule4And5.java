@@ -15,6 +15,9 @@ public class Rule4And5 implements Rule {
     public Rule4And5(Rule rule1, Rule rule2) {
         this.rule1 = rule1;
         this.rule2 = rule2;
+        // Some notion related to the Gas in Ethereum:
+        // an application of the rule 1 allows the rule 2 to run
+        // ergo, applying the rule 1 is Gas for rule 2
         previousApplicationsOfRule1 = 0;
         previousApplicationsOfRule2 = 0;
     }
