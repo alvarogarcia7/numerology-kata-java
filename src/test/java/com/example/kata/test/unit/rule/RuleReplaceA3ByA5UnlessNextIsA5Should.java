@@ -6,7 +6,6 @@ import io.vavr.control.Option;
 import org.junit.Test;
 
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
-import static io.vavr.control.Option.none;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
