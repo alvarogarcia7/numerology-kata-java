@@ -23,7 +23,7 @@ public class Rule4And5 implements Rule {
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
         for (int i = 0; i < index; i++) {
-            if (isRule1Applicable() && (rule1.apply(elements, i).isDefined())) {
+            if (isRule1Applicable() && (rule1Applies(elements, i))) {
                 previousApplicationsOfRule1++;
                 continue;
             }
@@ -33,7 +33,7 @@ public class Rule4And5 implements Rule {
             }
         }
 
-        if (isRule1Applicable() && rule1.apply(elements, index).isDefined()) {
+        if (isRule1Applicable() && rule1Applies(elements, index)) {
             return rule1.apply(elements, index);
         }
         if (isRule2Applicable() && rule2.apply(elements, index).isDefined()) {
@@ -41,6 +41,10 @@ public class Rule4And5 implements Rule {
         }
 
         return Option.none();
+    }
+
+    boolean rule1Applies(Elements elements, int index) {
+        return rule1.apply(elements, index).isDefined();
     }
 
     boolean isRule2Applicable() {
