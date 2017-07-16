@@ -1,7 +1,7 @@
 package com.example.kata.test.unit.rule;
 
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.rules.Rule4And5;
+import com.example.kata.rules.RulesThatEnableOtherRules;
 import com.example.kata.test.helper.Rules;
 import io.vavr.control.Option;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class RuleComposeRule4And5Should {
+public class RuleComposeRulesThatEnableOtherRulesShould {
 
     @Test
     public void apply_the_rule_when_there_is_gas_left() {
@@ -29,7 +29,7 @@ public class RuleComposeRule4And5Should {
     }
 
     private Rule rule() {
-        return new Rule4And5(Rules.replacement(0, 1), Rules.replacement(1, 2));
+        return new RulesThatEnableOtherRules(Rules.replacement(0, 1), Rules.replacement(1, 2));
     }
 
 

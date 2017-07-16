@@ -6,11 +6,11 @@ import io.vavr.control.Option;
 
 import java.util.List;
 
-public class Rule4And5 implements Rule {
+public class RulesThatEnableOtherRules implements Rule {
     private final GasConsumingRule gasConsumingRule1;
     private final GasConsumingRule gasConsumingRule2;
 
-    public Rule4And5(Rule rule1, Rule rule2) {
+    public RulesThatEnableOtherRules(Rule rule1, Rule rule2) {
         gasConsumingRule1 = new GasConsumingRule(rule1, 1);
         gasConsumingRule2 = new GasConsumingRule(rule2, 1);
     }
@@ -30,7 +30,7 @@ public class Rule4And5 implements Rule {
                 continue;
             }
         }
-
+        
         if (gasConsumingRule1.apply(elements, index).isDefined()) {
             return gasConsumingRule1.apply(elements, index).get();
         }
