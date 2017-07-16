@@ -8,6 +8,7 @@ import io.vavr.control.Option;
 import org.junit.Test;
 
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
+import static com.example.kata.test.helper.Rules.*;
 import static io.vavr.control.Option.*;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,11 +47,11 @@ public class RuleComposeRulesThatEnableOtherRulesShould {
     }
 
     private Rule rule() {
-        return new RulesThatEnableOtherRules(Rules.replacement(0, 1), Rules.replacement(1, 2));
+        return new RulesThatEnableOtherRules(replacement(0, 1), replacement(1, 2));
     }
 
     private Rule limitedGasrule() {
-        return new RulesThatEnableOtherRules(new LimitedGasRule(Rules.replacement(0, 1), 1,1), new LimitedGasRule(Rules.replacement(1, 2), 1, 1));
+        return new RulesThatEnableOtherRules(new LimitedGasRule(replacement(0, 1), 1,1), new LimitedGasRule(replacement(1, 2), 1, 1));
     }
 
 
