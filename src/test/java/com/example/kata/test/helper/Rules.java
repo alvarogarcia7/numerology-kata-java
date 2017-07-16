@@ -1,7 +1,7 @@
 package com.example.kata.test.helper;
 
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.numerology.rules.Rule9ForTwo10s;
+import com.example.kata.numerology.rules.RuleReplace9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
 import com.example.kata.rules.RuleReplaceA3ByA5UnlessNextIsA5;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Rules {
     public static Rule rule1() {
-        return new Rule9ForTwo10s();
+        return new RuleReplace9ForTwo10s();
     }
 
     public static RuleReplace2ForAnEqualAmountOfNumbersToTheLeft rule2() {

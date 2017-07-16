@@ -9,7 +9,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Rule9ForTwo10sShould {
+public class RuleReplace9ForTwo10SShould {
 
     @Test
     public void rule_1_cannot_access_a_nonexisting_index() {

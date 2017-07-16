@@ -6,7 +6,7 @@ import io.vavr.control.Option;
 import java.util.Arrays;
 import java.util.List;
 
-public class Rule9ForTwo10s implements Rule {
+public class RuleReplace9ForTwo10s implements Rule {
     public Option<List<Integer>> apply(Elements elements, int index) {
         if (!elements.exists(index)) {
             return Option.none();
