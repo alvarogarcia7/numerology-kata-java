@@ -13,7 +13,8 @@ import static java.util.Arrays.asList;
 public class RuleReplaceA3ByA5UnlessNextIsA5 implements Rule {
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
-        if (elements.exists(index + 1) && elements.at(index + 1).equals(5)) {
+        int successorIndex = index + 1;
+        if (elements.exists(successorIndex) && elements.at(successorIndex).equals(5)) {
             return none();
         }
         return of(asList(5));
