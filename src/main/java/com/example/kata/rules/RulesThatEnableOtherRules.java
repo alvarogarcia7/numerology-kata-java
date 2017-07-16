@@ -41,11 +41,11 @@ public class RulesThatEnableOtherRules implements Rule {
         // Then, use `equals` for finding out which Rule is it
         Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
             if(rule2.equals(gasConsumingRule)){
-                rule2.consumeGas();
+//                rule2.consumeGas();
                 rule1.refuel();
             } else if(rule1.equals(gasConsumingRule)) {
                 rule2.refuel();
-                rule1.consumeGas();
+//                rule1.consumeGas();
             }
         };
         return new RefuelingScheme(gasConsumingRuleGasConsumingRuleFunction);

@@ -28,6 +28,11 @@ public class RuleComposeRulesThatEnableOtherRulesShould {
         assertThat(apply(rule()).to(asList(0, 0)).at(1), is(Option.none()));
     }
 
+    @Test
+    public void do_not_apply_rules_without_gas_x() {
+        assertThat(apply(rule()).to(asList(0, 0, 0)).at(2), is(Option.none()));
+    }
+
     private Rule rule() {
         return new RulesThatEnableOtherRules(Rules.replacement(0, 1), Rules.replacement(1, 2));
     }

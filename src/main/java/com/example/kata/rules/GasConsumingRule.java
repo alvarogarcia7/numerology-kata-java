@@ -30,7 +30,11 @@ public class GasConsumingRule implements Rule {
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         if (hasGas()) {
-            return rule.apply(elements, index);
+            Option<List<Integer>> application = rule.apply(elements, index);
+            if (application.isDefined()) {
+                consumeGas();
+            }
+            return application;
         }
         return Option.none();
     }
