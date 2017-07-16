@@ -15,7 +15,7 @@ public class RulesThatEnableOtherRules implements Rule {
     public RulesThatEnableOtherRules(Rule rule1, Rule rule2) {
         gasConsumingRule1 = new GasConsumingRule(rule1, 1);
         gasConsumingRule2 = new GasConsumingRule(rule2, 1);
-        this.refuelingScheme = alternatingRefuelingScheme();
+        this.refuelingScheme = alternatingRefuelingScheme(gasConsumingRule1, gasConsumingRule2);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class RulesThatEnableOtherRules implements Rule {
                 .orElse(gasConsumingRule2.apply(elements, index));
     }
 
-    RefuelingScheme alternatingRefuelingScheme() {
+    RefuelingScheme alternatingRefuelingScheme(GasConsumingRule gasConsumingRule1, GasConsumingRule gasConsumingRule2) {
         Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
             if(gasConsumingRule2.equals(gasConsumingRule)){
                 gasConsumingRule2.consumeGas();
