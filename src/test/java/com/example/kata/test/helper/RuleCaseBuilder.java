@@ -1,6 +1,7 @@
 package com.example.kata.test.helper;
 
 import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.ruleengine.RuleEngine;
 import com.example.kata.numerology.rules.Rule;
 import io.vavr.control.Option;
 
