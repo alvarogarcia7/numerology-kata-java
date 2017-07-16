@@ -33,14 +33,10 @@ public class RulesThatEnableOtherRules implements Rule {
         for (int i = 0; i < index; i++) {
             if (gasConsumingRule1.apply(elements, i).isDefined()) {
                 refuelingScheme.apply(gasConsumingRule1);
-//                gasConsumingRule1.consumeGas();
-//                gasConsumingRule2.refuel();
                 continue;
             }
             if (gasConsumingRule2.apply(elements, i).isDefined()) {
                 refuelingScheme.apply(gasConsumingRule2);
-//                gasConsumingRule1.refuel();
-//                gasConsumingRule2.consumeGas();
                 continue;
             }
         }
