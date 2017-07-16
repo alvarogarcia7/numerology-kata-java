@@ -27,7 +27,7 @@ public class Rule4And5 implements Rule {
                 previousApplicationsOfRule1++;
                 continue;
             }
-            if (isRule2Applicable() && rule2.apply(elements, i).isDefined()) {
+            if (isRule2Applicable() && applyRule2To(elements, i).isDefined()) {
                 previousApplicationsOfRule2++;
                 continue;
             }
@@ -36,11 +36,15 @@ public class Rule4And5 implements Rule {
         if (isRule1Applicable() && applyRule1To(elements, index).isDefined()) {
             return applyRule1To(elements, index);
         }
-        if (isRule2Applicable() && rule2.apply(elements, index).isDefined()) {
-            return rule2.apply(elements, index);
+        if (isRule2Applicable() && applyRule2To(elements, index).isDefined()) {
+            return applyRule2To(elements, index);
         }
 
         return Option.none();
+    }
+
+    Option<List<Integer>> applyRule2To(Elements elements, int index) {
+        return rule2.apply(elements, index);
     }
 
     Option<List<Integer>> applyRule1To(Elements elements, int index) {
