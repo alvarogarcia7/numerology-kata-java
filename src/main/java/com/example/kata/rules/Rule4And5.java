@@ -7,19 +7,12 @@ import io.vavr.control.Option;
 import java.util.List;
 
 public class Rule4And5 implements Rule {
-    private final Rule rule1;
-    private final Rule rule2;
-    private int previousApplicationsOfRule1;
-    private int previousApplicationsOfRule2;
+    private final GasConsumingRule gasConsumingRule1;
+    private final GasConsumingRule gasConsumingRule2;
 
     public Rule4And5(Rule rule1, Rule rule2) {
-        this.rule1 = rule1;
-        this.rule2 = rule2;
-        // Some notion related to the Gas in Ethereum:
-        // an application of the rule 1 allows the rule 2 to run
-        // ergo, applying the rule 1 is Gas for rule 2
-        previousApplicationsOfRule1 = 0;
-        previousApplicationsOfRule2 = 0;
+        gasConsumingRule1 = new GasConsumingRule(rule1, 1);
+        gasConsumingRule2 = new GasConsumingRule(rule2, 1);
     }
 
     @Override
@@ -27,11 +20,13 @@ public class Rule4And5 implements Rule {
         //calculate state of rules until now
         for (int i = 0; i < index; i++) {
             if (isRule1Applicable() && applyRule1To(elements, i).isDefined()) {
-                previousApplicationsOfRule1++;
+                gasConsumingRule1.consumeGas();
+                gasConsumingRule2.refuel();
                 continue;
             }
             if (isRule2Applicable() && applyRule2To(elements, i).isDefined()) {
-                previousApplicationsOfRule2++;
+                gasConsumingRule1.refuel();
+                gasConsumingRule2.consumeGas();
                 continue;
             }
         }
@@ -47,18 +42,18 @@ public class Rule4And5 implements Rule {
     }
 
     private Option<List<Integer>> applyRule2To(Elements elements, int index) {
-        return rule2.apply(elements, index);
+        return gasConsumingRule2.apply(elements, index).get();
     }
 
     private Option<List<Integer>> applyRule1To(Elements elements, int index) {
-        return rule1.apply(elements, index);
+        return gasConsumingRule1.apply(elements, index).get();
     }
 
     boolean isRule2Applicable() {
-        return previousApplicationsOfRule2 <= previousApplicationsOfRule1;
+        return gasConsumingRule2.hasGas();
     }
 
     boolean isRule1Applicable() {
-        return previousApplicationsOfRule1 <= previousApplicationsOfRule2;
+        return gasConsumingRule1.hasGas();
     }
 }
