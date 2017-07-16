@@ -14,24 +14,18 @@ import static org.hamcrest.Matchers.is;
 public class RuleComposeRule4And5Should {
 
     @Test
-    public void try_to_apply_the_rule_the_first_time() {
+    public void apply_the_rule_when_there_is_gas_left() {
         assertThat(apply(rule()).to(asList(0)).at(0), is(Option.of(asList(1))));
     }
 
-    /**
-     * This property refers to banning the application of the second rule following some conditions
-     */
     @Test
-    public void do_not_apply_the_same_rule_twice() {
-        assertThat(apply(rule()).to(asList(0, 0)).at(1), is(Option.none()));
+    public void apply_the_other_rule_when_that_rule_has_gas_left() {
+        assertThat(apply(rule()).to(asList(0, 1)).at(1), is(Option.of(asList(2))));
     }
 
-    /**
-     * This property refers to banning the application of the second rule following some conditions
-     */
     @Test
-    public void apply_the_available_rule() {
-        assertThat(apply(rule()).to(asList(0, 1)).at(1), is(Option.of(asList(2))));
+    public void do_not_apply_rules_without_gas() {
+        assertThat(apply(rule()).to(asList(0, 0)).at(1), is(Option.none()));
     }
 
     private Rule rule() {
