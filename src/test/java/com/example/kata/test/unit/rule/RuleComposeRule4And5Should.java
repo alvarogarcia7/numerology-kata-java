@@ -17,6 +17,10 @@ public class RuleComposeRule4And5Should {
     public void try_to_apply_the_rule_the_first_time() {
         assertThat(apply(rule()).to(asList(4, 4)).at(0), is(Option.of(asList(1))));
     }
+
+    /**
+     * This property refers to banning the application of the second rule following some conditions
+     */
     @Test
     public void do_not_apply_the_same_rule_twice() {
         assertThat(apply(rule()).to(asList(4, 4)).at(1), is(Option.none()));
