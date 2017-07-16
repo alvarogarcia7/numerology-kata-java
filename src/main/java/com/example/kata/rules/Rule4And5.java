@@ -9,34 +9,34 @@ import java.util.List;
 public class Rule4And5 implements Rule {
     private final Rule rule1;
     private final Rule rule2;
-    private int numberOfTimesForRule1;
-    private int numberOfTimesForRule2;
+    private int previousApplicationsOfRule1;
+    private int previousApplicationsOfRule2;
 
     public Rule4And5(Rule rule1, Rule rule2) {
         this.rule1 = rule1;
         this.rule2 = rule2;
-        numberOfTimesForRule1 = 0;
-        numberOfTimesForRule2 = 0;
+        previousApplicationsOfRule1 = 0;
+        previousApplicationsOfRule2 = 0;
     }
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
         for (int i = 0; i < index; i++) {
-            if (numberOfTimesForRule1 <= numberOfTimesForRule2 && (rule1.apply(elements, i).isDefined())) {
-                numberOfTimesForRule1++;
+            if (previousApplicationsOfRule1 <= previousApplicationsOfRule2 && (rule1.apply(elements, i).isDefined())) {
+                previousApplicationsOfRule1++;
                 continue;
             }
-            if (numberOfTimesForRule2 <= numberOfTimesForRule1 && (rule2.apply(elements, i).isDefined())) {
-                numberOfTimesForRule2++;
+            if (previousApplicationsOfRule2 <= previousApplicationsOfRule1 && (rule2.apply(elements, i).isDefined())) {
+                previousApplicationsOfRule2++;
                 continue;
             }
         }
 
-        if (numberOfTimesForRule1 <= numberOfTimesForRule2 && rule1.apply(elements, index).isDefined()) {
+        if (previousApplicationsOfRule1 <= previousApplicationsOfRule2 && rule1.apply(elements, index).isDefined()) {
             return rule1.apply(elements, index);
         }
-        if (numberOfTimesForRule2 <= numberOfTimesForRule1 && rule2.apply(elements, index).isDefined()) {
+        if (previousApplicationsOfRule2 <= previousApplicationsOfRule1 && rule2.apply(elements, index).isDefined()) {
             return rule2.apply(elements, index);
         }
 
