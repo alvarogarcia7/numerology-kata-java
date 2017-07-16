@@ -37,6 +37,8 @@ public class RulesThatEnableOtherRules implements Rule {
     }
 
     RefuelingScheme alternatingRefuelingScheme(GasConsumingRule rule1, GasConsumingRule rule2) {
+        // This is a limitation of the java language, a lack of pattern matching.
+        // Then, use `equals` for finding out which Rule is it
         Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
             if(rule2.equals(gasConsumingRule)){
                 rule2.consumeGas();
