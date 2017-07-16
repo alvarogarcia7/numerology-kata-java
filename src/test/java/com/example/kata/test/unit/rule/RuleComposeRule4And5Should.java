@@ -18,7 +18,7 @@ public class RuleComposeRule4And5Should {
         assertThat(apply(rule()).to(asList(4, 4)).at(0), is(Option.of(asList(1))));
     }
     @Test
-    public void only_replace_a_second_4_after_having_replaced_a_3() {
+    public void do_not_apply_the_same_rule_twice() {
         assertThat(apply(rule()).to(asList(4, 4)).at(1), is(Option.none()));
     }
 
