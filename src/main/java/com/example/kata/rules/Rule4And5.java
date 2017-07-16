@@ -22,7 +22,7 @@ public class Rule4And5 implements Rule {
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
-        for(int i=0;i<index;i++){
+        for (int i = 0; i < index; i++) {
             if (numberOfTimesForRule1 <= numberOfTimesForRule2 && (rule1.apply(elements, i).isDefined())) {
                 numberOfTimesForRule1++;
                 continue;
@@ -33,10 +33,10 @@ public class Rule4And5 implements Rule {
             }
         }
 
-        if(numberOfTimesForRule1 <= numberOfTimesForRule2 && rule1.apply(elements, index).isDefined()){
+        if (numberOfTimesForRule1 <= numberOfTimesForRule2 && rule1.apply(elements, index).isDefined()) {
             return rule1.apply(elements, index);
         }
-        if(numberOfTimesForRule2 <= numberOfTimesForRule1 && rule2.apply(elements, index).isDefined()){
+        if (numberOfTimesForRule2 <= numberOfTimesForRule1 && rule2.apply(elements, index).isDefined()) {
             return rule2.apply(elements, index);
         }
 
