@@ -14,10 +14,14 @@ public class RuleReplaceA4ByA3UnlessPreviousIsA5 implements Rule {
     public Option<List<Integer>> apply(Elements elements, int index) {
         Option<Integer> apply = new PreviousSelector().apply(elements, index);
         if(apply.isEmpty()){
-            return Option.of(asList(4));
+            return Option.of(replace());
         }
         return apply
                 .filter(previous -> !previous.equals(5))
-                .map(i -> asList(4));
+                .map(i -> replace());
+    }
+
+    List<Integer> replace() {
+        return asList(4);
     }
 }
