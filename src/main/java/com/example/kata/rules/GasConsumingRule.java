@@ -15,7 +15,7 @@ public class GasConsumingRule implements Rule {
         this.availableGas = availableGas;
     }
 
-    public void refuel() {
+    void refuel() {
         availableGas += 1;
     }
 
