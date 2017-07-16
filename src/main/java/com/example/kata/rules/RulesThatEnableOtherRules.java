@@ -15,16 +15,7 @@ public class RulesThatEnableOtherRules implements Rule {
     public RulesThatEnableOtherRules(Rule rule1, Rule rule2) {
         gasConsumingRule1 = new GasConsumingRule(rule1, 1);
         gasConsumingRule2 = new GasConsumingRule(rule2, 1);
-        Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
-            if(gasConsumingRule2.equals(gasConsumingRule)){
-                gasConsumingRule2.consumeGas();
-                gasConsumingRule1.refuel();
-            } else if(gasConsumingRule1.equals(gasConsumingRule)) {
-                gasConsumingRule2.refuel();
-                gasConsumingRule1.consumeGas();
-            }
-        };
-        refuelingScheme = new RefuelingScheme(gasConsumingRuleGasConsumingRuleFunction);
+        this.refuelingScheme = alternatingRefuelingScheme();
     }
 
     @Override
@@ -43,6 +34,19 @@ public class RulesThatEnableOtherRules implements Rule {
 
         return gasConsumingRule1.apply(elements, index)
                 .orElse(gasConsumingRule2.apply(elements, index));
+    }
+
+    RefuelingScheme alternatingRefuelingScheme() {
+        Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
+            if(gasConsumingRule2.equals(gasConsumingRule)){
+                gasConsumingRule2.consumeGas();
+                gasConsumingRule1.refuel();
+            } else if(gasConsumingRule1.equals(gasConsumingRule)) {
+                gasConsumingRule2.refuel();
+                gasConsumingRule1.consumeGas();
+            }
+        };
+        return new RefuelingScheme(gasConsumingRuleGasConsumingRuleFunction);
     }
 
     private class RefuelingScheme {
