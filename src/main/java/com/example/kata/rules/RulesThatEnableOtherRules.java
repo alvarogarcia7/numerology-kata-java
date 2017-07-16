@@ -31,14 +31,8 @@ public class RulesThatEnableOtherRules implements Rule {
             }
         }
 
-        if (gasConsumingRule1.apply(elements, index).isDefined()) {
-            return gasConsumingRule1.apply(elements, index);
-        }
-        if (gasConsumingRule2.apply(elements, index).isDefined()) {
-            return gasConsumingRule2.apply(elements, index);
-        }
-
-        return Option.none();
+        return gasConsumingRule1.apply(elements, index)
+                .orElse(gasConsumingRule2.apply(elements, index));
     }
 
 }
