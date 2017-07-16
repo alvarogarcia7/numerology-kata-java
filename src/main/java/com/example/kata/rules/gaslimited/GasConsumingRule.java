@@ -1,4 +1,4 @@
-package com.example.kata.rules;
+package com.example.kata.rules.gaslimited;
 
 import com.example.kata.numerology.Elements;
 import com.example.kata.numerology.rules.Rule;
@@ -8,36 +8,25 @@ import java.util.List;
 
 public class GasConsumingRule implements Rule {
     private final Rule rule;
-    private int availableGas;
+    private Gas gas;
 
-    public GasConsumingRule(Rule rule, int availableGas) {
+    public GasConsumingRule(Rule rule, Gas gas) {
         this.rule = rule;
-        this.availableGas = availableGas;
+        this.gas = gas;
     }
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
-        if (hasGas()) {
+        if (gas.hasGas()) {
             Option<List<Integer>> application = rule.apply(elements, index);
             if (application.isDefined()) {
-                consumeGas();
+                gas.consume();
             }
             return application;
         }
         return Option.none();
     }
 
-    protected void refuel() {
-        availableGas += 1;
-    }
-
-    protected void consumeGas() {
-        availableGas -= 1;
-    }
-
-    private boolean hasGas() {
-        return availableGas > 0;
-    }
 
     @Override
     public boolean equals(Object o) {

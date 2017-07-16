@@ -1,8 +1,11 @@
 package com.example.kata.test.unit.rule;
 
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.rules.LimitedGasRule;
-import com.example.kata.rules.RulesThatEnableOtherRules;
+import com.example.kata.rules.*;
+import com.example.kata.rules.gaslimited.Gas;
+import com.example.kata.rules.gaslimited.GasConsumingRule;
+import com.example.kata.rules.gaslimited.LimitedGasRule;
+import com.example.kata.rules.gaslimited.MaximumGas;
 import org.junit.Test;
 
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
@@ -45,12 +48,21 @@ public class RulesThatEnableOtherRulesShould {
         assertThat(apply(limitedGasrule()).to(asList(0, 1, 0)).at(2), is(none()));
     }
 
+    @Test
+    public void do_not_apply_the_rule_when_it_cannot_be_refueled_any_more() {
+        assertThat(apply(limitedGasRuleThatHasARefuelingLimit()).to(asList(0, 1, 0)).at(2), is(none()));
+    }
+
     private Rule rule() {
         return new RulesThatEnableOtherRules(replacement(0, 1), replacement(1, 2));
     }
 
     private Rule limitedGasrule() {
-        return new RulesThatEnableOtherRules(new LimitedGasRule(replacement(0, 1), 1,1), new LimitedGasRule(replacement(1, 2), 1, 1));
+        return new RulesThatEnableOtherRules(new GasConsumingRule(replacement(0, 1), new Gas(1)), new GasConsumingRule(replacement(1, 2), new Gas(1)));
+    }
+
+    private Rule limitedGasRuleThatHasARefuelingLimit() {
+        return new RulesThatEnableOtherRules(new LimitedGasRule(replacement(0, 1), new MaximumGas(1, 1)), new LimitedGasRule(replacement(1, 2), new MaximumGas(1, 1)));
     }
 
 

@@ -2,6 +2,9 @@ package com.example.kata.rules;
 
 import com.example.kata.numerology.Elements;
 import com.example.kata.numerology.rules.Rule;
+import com.example.kata.rules.gaslimited.Gas;
+import com.example.kata.rules.gaslimited.GasConsumingRule;
+import io.vavr.Tuple2;
 import io.vavr.control.Option;
 
 import java.util.List;
@@ -13,9 +16,13 @@ public class RulesThatEnableOtherRules implements Rule {
     private final RefuelingScheme refuelingScheme;
 
     public RulesThatEnableOtherRules(Rule rule1, Rule rule2) {
-        gasConsumingRule1 = new GasConsumingRule(rule1, 1);
-        gasConsumingRule2 = new GasConsumingRule(rule2, 1);
-        this.refuelingScheme = alternatingRefuelingScheme(gasConsumingRule1, gasConsumingRule2);
+        Gas availableGas1 = new Gas(1);
+        Gas availableGas2 = new Gas(1);
+        gasConsumingRule1 = new GasConsumingRule(rule1, availableGas1);
+        gasConsumingRule2 = new GasConsumingRule(rule2, availableGas2);
+        Tuple2<Rule, Gas> refuelingScheme1 = new Tuple2<>(gasConsumingRule1, availableGas1);
+        Tuple2<Rule, Gas> refuelingScheme2 = new Tuple2<>(gasConsumingRule2, availableGas2);
+        this.refuelingScheme = alternatingRefuelingScheme(refuelingScheme1, refuelingScheme2);
     }
 
     @Override
@@ -36,14 +43,14 @@ public class RulesThatEnableOtherRules implements Rule {
                 .orElse(gasConsumingRule2.apply(elements, index));
     }
 
-    RefuelingScheme alternatingRefuelingScheme(GasConsumingRule rule1, GasConsumingRule rule2) {
+    RefuelingScheme alternatingRefuelingScheme(Tuple2<Rule, Gas> rule1, Tuple2<Rule, Gas> rule2) {
         // This is a limitation of the java language, a lack of pattern matching.
         // Then, use `equals` for finding out which Rule is it
-        Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsumingRule -> {
-            if(rule2.equals(gasConsumingRule)){
-                rule1.refuel();
-            } else if(rule1.equals(gasConsumingRule)) {
-                rule2.refuel();
+        Consumer<GasConsumingRule> gasConsumingRuleGasConsumingRuleFunction = gasConsuming -> {
+            if(rule2._1.equals(gasConsuming)){
+                rule1._2.refuel();
+            } else if(rule1._1.equals(gasConsuming)) {
+                rule2._2.refuel();
             }
         };
         return new RefuelingScheme(gasConsumingRuleGasConsumingRuleFunction);
@@ -56,8 +63,8 @@ public class RulesThatEnableOtherRules implements Rule {
             this.scheme = scheme;
         }
 
-        public void apply(GasConsumingRule gasConsumingRule) {
-            this.scheme.accept(gasConsumingRule);
+        public void apply(GasConsumingRule gasConsuming) {
+            this.scheme.accept(gasConsuming);
         }
     }
 }
