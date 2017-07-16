@@ -1,15 +1,15 @@
 package com.example.kata.test.helper;
 
-import com.example.kata.numerology.rules.Rule;
-import com.example.kata.numerology.rules.RuleReplace9ForTwo10s;
-import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
-import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
+import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.rules.*;
 import com.example.kata.rules.RuleReplaceA3ByA5UnlessNextIsA5;
 import com.example.kata.rules.RuleReplaceA4ByA3UnlessPreviousIsA5;
 import com.example.kata.test.unit.rule.RuleReplaceA4ByA3UnlessPreviousIsA5Should;
 import io.vavr.control.Option;
 
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class Rules {
     public static Rule rule1() {
@@ -47,5 +47,14 @@ public class Rules {
 
     public static Rule rule5() {
         return new RuleReplaceA4ByA3UnlessPreviousIsA5();
+    }
+
+    public static Rule replacement(int input, int output) {
+        return new Rule(){
+            @Override
+            public Option<List<Integer>> apply(Elements elements, int index) {
+                return new ByIndexSelector().apply(elements, index).filter(element -> element.equals(input)).map(matches -> asList(output));
+            }
+        };
     }
 }

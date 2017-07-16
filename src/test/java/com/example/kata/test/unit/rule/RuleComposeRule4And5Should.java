@@ -15,7 +15,7 @@ public class RuleComposeRule4And5Should {
 
     @Test
     public void try_to_apply_the_rule_the_first_time() {
-        assertThat(apply(rule()).to(asList(4, 4)).at(0), is(Option.of(asList(1))));
+        assertThat(apply(rule()).to(asList(0)).at(0), is(Option.of(asList(1))));
     }
 
     /**
@@ -23,7 +23,7 @@ public class RuleComposeRule4And5Should {
      */
     @Test
     public void do_not_apply_the_same_rule_twice() {
-        assertThat(apply(rule()).to(asList(4, 4)).at(1), is(Option.of(asList(2))));
+        assertThat(apply(rule()).to(asList(0, 0)).at(1), is(Option.none()));
     }
 
     /**
@@ -31,11 +31,11 @@ public class RuleComposeRule4And5Should {
      */
     @Test
     public void apply_the_available_rule() {
-        assertThat(apply(rule()).to(asList(4, 3)).at(1), is(Option.of(asList(2))));
+        assertThat(apply(rule()).to(asList(0, 1)).at(1), is(Option.of(asList(2))));
     }
 
     private Rule rule() {
-        return new Rule4And5(Rules.tautologyThatProduces(asList(1)), Rules.tautologyThatProduces(asList(2)));
+        return new Rule4And5(Rules.replacement(0, 1), Rules.replacement(1, 2));
     }
 
 
