@@ -19,41 +19,26 @@ public class Rule4And5 implements Rule {
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
         for (int i = 0; i < index; i++) {
-            if (isRule1Applicable() && applyRule1To(elements, i).isDefined()) {
+            if (gasConsumingRule1.apply(elements, i).isDefined()) {
                 gasConsumingRule1.consumeGas();
                 gasConsumingRule2.refuel();
                 continue;
             }
-            if (isRule2Applicable() && applyRule2To(elements, i).isDefined()) {
+            if (gasConsumingRule2.apply(elements, i).isDefined()) {
                 gasConsumingRule1.refuel();
                 gasConsumingRule2.consumeGas();
                 continue;
             }
         }
 
-        if (isRule1Applicable() && applyRule1To(elements, index).isDefined()) {
-            return applyRule1To(elements, index);
+        if (gasConsumingRule1.apply(elements, index).isDefined()) {
+            return gasConsumingRule1.apply(elements, index).get();
         }
-        if (isRule2Applicable() && applyRule2To(elements, index).isDefined()) {
-            return applyRule2To(elements, index);
+        if (gasConsumingRule2.apply(elements, index).isDefined()) {
+            return gasConsumingRule2.apply(elements, index).get();
         }
 
         return Option.none();
     }
 
-    private Option<List<Integer>> applyRule2To(Elements elements, int index) {
-        return gasConsumingRule2.apply(elements, index).get();
-    }
-
-    private Option<List<Integer>> applyRule1To(Elements elements, int index) {
-        return gasConsumingRule1.apply(elements, index).get();
-    }
-
-    boolean isRule2Applicable() {
-        return gasConsumingRule2.hasGas();
-    }
-
-    boolean isRule1Applicable() {
-        return gasConsumingRule1.hasGas();
-    }
 }
