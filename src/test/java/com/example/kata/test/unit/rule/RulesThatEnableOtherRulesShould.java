@@ -13,7 +13,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class RuleComposeRulesThatEnableOtherRulesShould {
+public class RulesThatEnableOtherRulesShould {
 
     @Test
     public void apply_the_rule_when_there_is_gas_left() {
