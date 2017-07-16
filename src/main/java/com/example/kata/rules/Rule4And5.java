@@ -43,11 +43,11 @@ public class Rule4And5 implements Rule {
         return Option.none();
     }
 
-    Option<List<Integer>> applyRule2To(Elements elements, int index) {
+    private Option<List<Integer>> applyRule2To(Elements elements, int index) {
         return rule2.apply(elements, index);
     }
 
-    Option<List<Integer>> applyRule1To(Elements elements, int index) {
+    private Option<List<Integer>> applyRule1To(Elements elements, int index) {
         return rule1.apply(elements, index);
     }
 
