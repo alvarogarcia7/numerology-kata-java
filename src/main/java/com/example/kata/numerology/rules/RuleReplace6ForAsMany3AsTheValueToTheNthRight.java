@@ -11,15 +11,15 @@ import java.util.List;
 
 public class RuleReplace6ForAsMany3AsTheValueToTheNthRight implements Rule {
 
-    private final Rule withinBounds = new WithinBoundsRule();
     private final Rule equalityTo = new EqualityToRule(6);
+    private ByIndexSelector byIndexSelector = new ByIndexSelector();
     private Selector previousSelector = new PreviousSelector();
     private AtADistanceSelectorFactory atADistanceSelectorFactory = AtADistanceSelector.factory();
 
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int i) {
-        return withinBounds.apply(elements, i)
+        return byIndexSelector.apply(elements, i)
                 .flatMap(r -> equalityTo.apply(elements, i)
                         .flatMap(r2 -> previousSelector.apply(elements, i)
                                 .flatMap(previous -> {
