@@ -19,11 +19,11 @@ public class GasConsumingRule implements Rule {
         availableGas += 1;
     }
 
-    public void consumeGas() {
+    private void consumeGas() {
         availableGas -= 1;
     }
 
-    public boolean hasGas() {
+    private boolean hasGas() {
         return availableGas > 0;
     }
 
