@@ -3,13 +3,12 @@ package com.example.kata.test.unit.rule;
 import com.example.kata.numerology.rules.Rule;
 import com.example.kata.rules.LimitedGasRule;
 import com.example.kata.rules.RulesThatEnableOtherRules;
-import com.example.kata.test.helper.Rules;
-import io.vavr.control.Option;
 import org.junit.Test;
 
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
-import static com.example.kata.test.helper.Rules.*;
-import static io.vavr.control.Option.*;
+import static com.example.kata.test.helper.Rules.replacement;
+import static io.vavr.control.Option.none;
+import static io.vavr.control.Option.of;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
