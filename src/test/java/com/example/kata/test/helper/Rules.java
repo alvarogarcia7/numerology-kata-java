@@ -5,6 +5,8 @@ import com.example.kata.numerology.rules.RuleReplace9ForTwo10s;
 import com.example.kata.numerology.rules.RuleReplace2ForAnEqualAmountOfNumbersToTheLeft;
 import com.example.kata.numerology.rules.RuleReplace6ForAsMany3AsTheValueToTheNthRight;
 import com.example.kata.rules.RuleReplaceA3ByA5UnlessNextIsA5;
+import com.example.kata.rules.RuleReplaceA4ByA3UnlessPreviousIsA5;
+import com.example.kata.test.unit.rule.RuleReplaceA4ByA3UnlessPreviousIsA5Should;
 import io.vavr.control.Option;
 
 import java.util.List;
@@ -41,5 +43,9 @@ public class Rules {
 
     public static Rule rule4() {
         return new RuleReplaceA3ByA5UnlessNextIsA5();
+    }
+
+    public static Rule rule5() {
+        return new RuleReplaceA4ByA3UnlessPreviousIsA5();
     }
 }
