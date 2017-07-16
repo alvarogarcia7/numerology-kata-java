@@ -12,7 +12,11 @@ import static java.util.Arrays.asList;
 public class RuleReplaceA4ByA3UnlessPreviousIsA5 implements Rule {
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
-        return new PreviousSelector().apply(elements, index)
+        Option<Integer> apply = new PreviousSelector().apply(elements, index);
+        if(apply.isEmpty()){
+            return Option.of(asList(4));
+        }
+        return apply
                 .filter(previous -> !previous.equals(5))
                 .map(i -> asList(4));
     }

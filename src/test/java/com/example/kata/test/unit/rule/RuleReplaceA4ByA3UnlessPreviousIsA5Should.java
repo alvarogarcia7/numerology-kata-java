@@ -22,6 +22,15 @@ public class RuleReplaceA4ByA3UnlessPreviousIsA5Should {
         assertThat(apply(rule()).to(asList(5, 3)).at(1), is(Option.none()));
     }
 
+    /**
+     * If the element is at the beginning of the sequence, it is not immediately preceded by a 5
+     */
+    @Test
+    public void replace_as_the_end_of_the_sequence() {
+        assertThat(apply(rule()).to(asList(3)).at(0), is(Option.of(asList(4))));
+    }
+
+
     private Rule rule() {
         return Rules.rule5();
     }
