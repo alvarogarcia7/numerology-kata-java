@@ -15,18 +15,6 @@ public class GasConsumingRule implements Rule {
         this.availableGas = availableGas;
     }
 
-    void refuel() {
-        availableGas += 1;
-    }
-
-    private void consumeGas() {
-        availableGas -= 1;
-    }
-
-    private boolean hasGas() {
-        return availableGas > 0;
-    }
-
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         if (hasGas()) {
@@ -37,6 +25,18 @@ public class GasConsumingRule implements Rule {
             return application;
         }
         return Option.none();
+    }
+
+    void refuel() {
+        availableGas += 1;
+    }
+
+    private void consumeGas() {
+        availableGas -= 1;
+    }
+
+    private boolean hasGas() {
+        return availableGas > 0;
     }
 
     @Override
