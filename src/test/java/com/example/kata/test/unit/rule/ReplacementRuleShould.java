@@ -3,14 +3,12 @@ package com.example.kata.test.unit.rule;
 import com.example.kata.numerology.rules.Rule;
 import com.example.kata.test.helper.Rules;
 import io.vavr.control.Option;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
 public class ReplacementRuleShould {
 
