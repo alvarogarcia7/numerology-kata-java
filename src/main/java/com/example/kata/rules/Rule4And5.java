@@ -23,12 +23,8 @@ public class Rule4And5 implements Rule {
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
         for(int i=0;i<index;i++){
-            if(rule1.apply(elements, i).isDefined()){
-                numberOfTimesForRule1++;
-            }
-            if(rule2.apply(elements, i).isDefined()){
-                numberOfTimesForRule2++;
-            }
+            rule1.apply(elements, i).forEach(x -> numberOfTimesForRule1++);
+            rule2.apply(elements, i).forEach(x -> numberOfTimesForRule2++);
         }
 
         //decide status for current element
