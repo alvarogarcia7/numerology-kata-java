@@ -12,7 +12,7 @@ import static java.util.Arrays.asList;
 
 public class RuleReplaceA3ByA5UnlessNextIsA5 implements Rule {
 
-    Rule replacement = new ReplacementRule(3, 5);
+    private final Rule replacement = new ReplacementRule(3, 5);
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
