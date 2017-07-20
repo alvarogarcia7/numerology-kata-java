@@ -22,14 +22,14 @@ public class RulesThatEnableOtherRules implements Rule {
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
         for (int i = 0; i < index; i++) {
-            if (gasConsumingRule1.apply(elements, i).isDefined()) {
+            final int finalI = i;
+            gasConsumingRule1.apply(elements, i).map(x -> {
                 refuelingScheme.apply(gasConsumingRule1);
-                continue;
-            }
-            if (gasConsumingRule2.apply(elements, i).isDefined()) {
-                refuelingScheme.apply(gasConsumingRule2);
-                continue;
-            }
+                return true;
+            }).orElse(() -> {
+                gasConsumingRule2.apply(elements, finalI).forEach(x -> refuelingScheme.apply(gasConsumingRule2));
+                return Option.of(true);
+            });
         }
 
         return gasConsumingRule1.apply(elements, index)
