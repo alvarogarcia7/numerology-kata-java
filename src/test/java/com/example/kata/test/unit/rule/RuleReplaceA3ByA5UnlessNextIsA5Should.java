@@ -22,6 +22,11 @@ public class RuleReplaceA3ByA5UnlessNextIsA5Should {
         assertThat(apply(rule()).to(asList(3, 5)).at(0), is(Option.none()));
     }
 
+    @Test
+    public void replace_if_element_is_a_3() {
+        assertThat(apply(rule()).to(asList(4, 1)).at(0), is(Option.none()));
+    }
+
 
     /**
      * If the element is at the end of the sequence, it is not immediately succeeded by a 5
