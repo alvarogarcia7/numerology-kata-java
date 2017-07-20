@@ -11,15 +11,15 @@ import static io.vavr.control.Option.of;
 import static java.util.Arrays.asList;
 
 public class RuleReplaceA3ByA5UnlessNextIsA5 implements Rule {
+
+    Rule replacement = new ReplacementRule(3, 5);
+
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         int successorIndex = index + 1;
-        if (elements.exists(index) && !elements.at(index).equals(3)) {
-            return none();
-        }
         if (elements.exists(successorIndex) && elements.at(successorIndex).equals(5)) {
             return none();
         }
-        return of(asList(5));
+        return replacement.apply(elements, index);
     }
 }
