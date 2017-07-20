@@ -13,17 +13,17 @@ import static org.hamcrest.Matchers.is;
 public class RuleReplaceA3ByA5UnlessNextIsA5Should {
 
     @Test
-    public void happy_path() {
+    public void happy_path () {
         assertThat(apply(rule()).to(asList(3, 4)).at(0), is(Option.of(asList(5))));
     }
 
     @Test
-    public void no_replace_as_next_is_a_5() {
+    public void no_replace_as_next_is_a_5 () {
         assertThat(apply(rule()).to(asList(3, 5)).at(0), is(Option.none()));
     }
 
     @Test
-    public void replace_if_element_is_a_3() {
+    public void replace_if_element_is_a_3 () {
         assertThat(apply(rule()).to(asList(4, 1)).at(0), is(Option.none()));
     }
 
@@ -32,11 +32,11 @@ public class RuleReplaceA3ByA5UnlessNextIsA5Should {
      * If the element is at the end of the sequence, it is not immediately succeeded by a 5
      */
     @Test
-    public void replace_as_the_end_of_the_sequence() {
+    public void replace_as_the_end_of_the_sequence () {
         assertThat(apply(rule()).to(asList(3)).at(0), is(Option.of(asList(5))));
     }
 
-    private Rule rule() {
+    private Rule rule () {
         return Rules.rule4();
     }
 }
