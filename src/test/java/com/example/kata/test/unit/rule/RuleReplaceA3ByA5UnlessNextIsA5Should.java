@@ -23,7 +23,7 @@ public class RuleReplaceA3ByA5UnlessNextIsA5Should {
     }
 
     @Test
-    public void not_replace_if_element_is_a_3 () {
+    public void not_replace_if_element_is_a_not_3 () {
         assertThat(apply(rule()).to(asList(4, 1)).at(0), is(Option.none()));
     }
 
