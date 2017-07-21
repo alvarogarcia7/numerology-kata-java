@@ -9,6 +9,8 @@ import com.example.kata.rules.RulesThatEnableOtherRules;
 import io.vavr.control.Option;
 import org.junit.Test;
 
+import java.util.List;
+
 import static com.example.kata.test.helper.NumerologyCaseBuilder.applyingAllRules;
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
 import static java.util.Arrays.asList;
@@ -27,18 +29,22 @@ public class RuleStep3_1Should {
 
     @Test
     public void apply_the_rule_to_the_first_pair () {
-        assertThat(apply(rule()).to(asList(3, 0, 4)).at(0), is(Option.of(asList(5))));
+        assertThat(apply(rule()).to(inputPair()).at(0), is(Option.of(asList(5))));
     }
 
     @Test
     public void apply_the_second_rule_to_the_first_pair () {
-        assertThat(apply(rule()).to(asList(3, 0, 4)).at(2), is(Option.of(asList(3))));
+        assertThat(apply(rule()).to(inputPair()).at(2), is(Option.of(asList(3))));
     }
-
 
     @Test
     public void apply_all_rules_to_the_first_pair () {
-        assertThat(applyingAllRules(rules()).to(asList(3, 0, 4)), is(asList(5, 0, 3)));
+        assertThat(applyingAllRules(rules()).to(inputPair()), is(asList(5, 0, 3)));
+    }
+
+
+    private List<Integer> inputPair () {
+        return asList(3, 0, 4);
     }
 
     private Rule rule() {
