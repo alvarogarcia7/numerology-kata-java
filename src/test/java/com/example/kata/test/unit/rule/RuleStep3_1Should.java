@@ -26,12 +26,12 @@ public class RuleStep3_1Should {
     //5,X,3,X,5,X,3,X,5,X,3
 
     @Test
-    public void apply_the_rule_to_a_the_first_element_in_a_valid_case () {
+    public void apply_the_rule_to_the_first_pair () {
         assertThat(apply(rule()).to(asList(3, 0, 4)).at(0), is(Option.of(asList(5))));
     }
 
     @Test
-    public void apply_the_second_rule_to_a_the_second_element_in_a_valid_case_x () {
+    public void apply_the_second_rule_to_the_first_pair () {
         assertThat(apply(rule()).to(asList(3, 0, 4)).at(2), is(Option.of(asList(3))));
     }
 
