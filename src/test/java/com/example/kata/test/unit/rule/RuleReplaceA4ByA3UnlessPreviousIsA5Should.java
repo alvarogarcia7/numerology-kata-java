@@ -14,12 +14,17 @@ public class RuleReplaceA4ByA3UnlessPreviousIsA5Should {
 
     @Test
     public void happy_path() {
-        assertThat(apply(rule()).to(asList(4, 3)).at(1), is(Option.of(asList(3))));
+        assertThat(apply(rule()).to(asList(4, 4)).at(1), is(Option.of(asList(3))));
     }
 
     @Test
     public void no_replace_as_previous_is_a_5() {
-        assertThat(apply(rule()).to(asList(5, 3)).at(1), is(Option.none()));
+        assertThat(apply(rule()).to(asList(5, 4)).at(1), is(Option.none()));
+    }
+
+    @Test
+    public void no_replace_as_unless_element_is_a_4 () {
+        assertThat(apply(rule()).to(asList(3, 9)).at(1), is(Option.none()));
     }
 
     /**
