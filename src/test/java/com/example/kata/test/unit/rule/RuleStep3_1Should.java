@@ -44,6 +44,9 @@ public class RuleStep3_1Should {
 
 
     private List<Integer> inputPair () {
+        // This represents a pair of input, although it contains three elements.
+        // The element in the middle is a a separator so both rules can be applied,
+        // as applying the first one might contradict the application of the second one
         return asList(3, 0, 4);
     }
 
