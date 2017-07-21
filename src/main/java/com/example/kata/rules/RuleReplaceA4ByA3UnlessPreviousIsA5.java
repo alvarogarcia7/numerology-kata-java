@@ -22,6 +22,6 @@ public class RuleReplaceA4ByA3UnlessPreviousIsA5 implements Rule {
     }
 
     List<Integer> replace() {
-        return asList(4);
+        return asList(3);
     }
 }

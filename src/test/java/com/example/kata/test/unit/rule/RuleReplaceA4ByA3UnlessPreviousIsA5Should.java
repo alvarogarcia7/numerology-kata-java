@@ -14,7 +14,7 @@ public class RuleReplaceA4ByA3UnlessPreviousIsA5Should {
 
     @Test
     public void happy_path() {
-        assertThat(apply(rule()).to(asList(4, 3)).at(1), is(Option.of(asList(4))));
+        assertThat(apply(rule()).to(asList(4, 3)).at(1), is(Option.of(asList(3))));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class RuleReplaceA4ByA3UnlessPreviousIsA5Should {
      */
     @Test
     public void replace_as_the_end_of_the_sequence() {
-        assertThat(apply(rule()).to(asList(3)).at(0), is(Option.of(asList(4))));
+        assertThat(apply(rule()).to(asList(4)).at(0), is(Option.of(asList(3))));
     }
 
 
