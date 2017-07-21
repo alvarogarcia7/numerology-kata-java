@@ -34,12 +34,12 @@ public class RuleStep3_1Should {
 
     @Test
     public void apply_the_second_rule_to_the_first_pair () {
-        assertThat(apply(rule()).to(inputPair()).at(2), is(Option.of(asList(3))));
+        assertThat(apply(rule()).to(flattened(inputPair())).at(2), is(Option.of(asList(3))));
     }
 
     @Test
     public void apply_all_rules_to_the_first_pair () {
-        assertThat(applyingAllRules(rules()).to(inputPair()), is(asList(5, 0, 3)));
+        assertThat(applyingAllRules(rules()).to(flattened(inputPair())), is(asList(5, 0, 3)));
     }
 
     private List<Integer> flattened (final List<Integer>... inputs) {
