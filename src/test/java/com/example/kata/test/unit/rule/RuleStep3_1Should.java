@@ -28,6 +28,11 @@ public class RuleStep3_1Should {
         assertThat(apply(rule()).to(asList(3, 0, 4)).at(0), is(Option.of(asList(5))));
     }
 
+    @Test
+    public void apply_the_second_rule_to_a_the_second_element_in_a_valid_case_x () {
+        assertThat(apply(rule()).to(asList(3, 0, 4)).at(2), is(Option.of(asList(3))));
+    }
+
     private Rule rule () {
         return new RulesThatEnableOtherRules(
                 new LimitedGasRule(
