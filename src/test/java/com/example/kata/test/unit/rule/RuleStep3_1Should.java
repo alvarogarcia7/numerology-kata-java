@@ -48,10 +48,10 @@ public class RuleStep3_1Should {
 
     private Rule rule () {
         return new RulesThatEnableOtherRules(
-                        new RuleReplaceA3ByA5UnlessNextIsA5(),
-                        new RuleReplaceA4ByA3UnlessPreviousIsA5(),
-                                new LimitedGasTank(2, 2),
-                                new LimitedGasTank(2, 2));
+                new RuleReplaceA3ByA5UnlessNextIsA5(),
+                new RuleReplaceA4ByA3UnlessPreviousIsA5(),
+                new LimitedGasTank(2, 2),
+                new LimitedGasTank(2, 2));
 
     }
 
