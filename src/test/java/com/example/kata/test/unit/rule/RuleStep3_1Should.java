@@ -50,18 +50,9 @@ public class RuleStep3_1Should {
         assertThat(to, is(flattened(output(), output())));
     }
 
-    List<Integer> output () {
-        return asList(5, 3);
-    }
-
     private List<Integer> flattened (final List<Integer>... inputs) {
         List<Integer> result = Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
         return result;
-    }
-
-
-    private List<Integer> input () {
-        return asList(3, 4);
     }
 
     private Rule rule () {
@@ -77,5 +68,13 @@ public class RuleStep3_1Should {
         return new Rule[]{
                 rule(),
         };
+    }
+
+    private List<Integer> input () {
+        return asList(3, 4);
+    }
+
+    List<Integer> output () {
+        return asList(5, 3);
     }
 }
