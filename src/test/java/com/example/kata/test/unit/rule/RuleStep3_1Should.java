@@ -53,7 +53,6 @@ public class RuleStep3_1Should {
                 new RuleReplaceA4ByA3UnlessPreviousIsA5(),
                 new LimitedGasTank(2, 2),
                 new LimitedGasTank(2, 2));
-
     }
 
     private Rule[] rules () {
