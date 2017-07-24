@@ -62,8 +62,7 @@ public class RuleStep3_1Should {
     }
 
     private List<Integer> flattened (final List<Integer>... inputs) {
-        List<Integer> result = Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
-        return result;
+        return Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
     private List<Integer> input () {
