@@ -57,9 +57,7 @@ public class RuleStep3_1Should {
     }
 
     private Rule[] rules () {
-        return new Rule[]{
-                rule(),
-        };
+        return new Rule[]{rule()};
     }
 
     private List<Integer> flattened (final List<Integer>... inputs) {
