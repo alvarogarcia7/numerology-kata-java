@@ -2,7 +2,6 @@ package com.example.kata.test.unit.rule;
 
 import com.example.kata.numerology.LimitedGasTank;
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.rules.GasTank;
 import com.example.kata.rules.RuleReplaceA3ByA5UnlessNextIsA5;
 import com.example.kata.rules.RuleReplaceA4ByA3UnlessPreviousIsA5;
 import com.example.kata.rules.RulesThatEnableOtherRules;
@@ -32,22 +31,22 @@ public class RuleStep3_1Should {
 
     @Test
     public void apply_the_rule_to_the_first_pair () {
-        assertThat(apply(rule()).to(flattened(inputPair())).at(0), is(Option.of(asList(5))));
+        assertThat(apply(rule()).to(flattened(input())).at(0), is(Option.of(asList(5))));
     }
 
     @Test
     public void apply_the_second_rule_to_the_first_pair () {
-        assertThat(apply(rule()).to(flattened(inputPair())).at(2), is(Option.of(asList(3))));
+        assertThat(apply(rule()).to(flattened(input())).at(2), is(Option.of(asList(3))));
     }
 
     @Test
     public void apply_all_rules_to_the_first_pair () {
-        assertThat(applyingAllRules(rules()).to(flattened(inputPair())), is(outputPair()));
+        assertThat(applyingAllRules(rules()).to(flattened(input())), is(outputPair()));
     }
 
     @Test
     public void apply_all_rules_to_two_pairs () {
-        List<Integer> to = applyingAllRules(rules()).to(flattened(inputPair(), inputPair()));
+        List<Integer> to = applyingAllRules(rules()).to(flattened(input(), input()));
         assertThat(to, is(flattened(outputPair(), outputPair())));
     }
 
@@ -61,7 +60,7 @@ public class RuleStep3_1Should {
     }
 
 
-    private List<Integer> inputPair () {
+    private List<Integer> input () {
         return asList(3, 4);
     }
 
