@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import static com.example.kata.test.helper.NumerologyCaseBuilder.applyingAllRules;
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -62,7 +63,7 @@ public class RuleStep3_1Should {
     }
 
     private List<Integer> flattened (final List<Integer>... inputs) {
-        return Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
+        return Arrays.stream(inputs).flatMap(Collection::stream).collect(toList());
     }
 
     private List<Integer> input () {
