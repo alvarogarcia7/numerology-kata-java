@@ -1,15 +1,18 @@
 package com.example.kata.test.unit.rule;
 
+import com.example.kata.numerology.LimitedGasTank;
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.numerology.rules.RuleIdentity;
-import com.example.kata.rules.LimitedGasRule;
+import com.example.kata.rules.GasTank;
 import com.example.kata.rules.RuleReplaceA3ByA5UnlessNextIsA5;
 import com.example.kata.rules.RuleReplaceA4ByA3UnlessPreviousIsA5;
 import com.example.kata.rules.RulesThatEnableOtherRules;
 import io.vavr.control.Option;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.kata.test.helper.NumerologyCaseBuilder.applyingAllRules;
 import static com.example.kata.test.helper.RuleCaseBuilder.apply;
@@ -39,11 +42,22 @@ public class RuleStep3_1Should {
 
     @Test
     public void apply_all_rules_to_the_first_pair () {
-        assertThat(applyingAllRules(rules()).to(flattened(inputPair())), is(asList(5, 0, 3)));
+        assertThat(applyingAllRules(rules()).to(flattened(inputPair())), is(outputPair()));
+    }
+
+    @Test
+    public void apply_all_rules_to_two_pairs () {
+        List<Integer> to = applyingAllRules(rules()).to(flattened(inputPair(), inputPair()));
+        assertThat(to, is(flattened(outputPair(), outputPair())));
+    }
+
+    List<Integer> outputPair () {
+        return asList(5, 3);
     }
 
     private List<Integer> flattened (final List<Integer>... inputs) {
-        return inputs[0];
+        List<Integer> result = Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
+        return result;
     }
 
 
@@ -51,22 +65,21 @@ public class RuleStep3_1Should {
         // This represents a pair of input, although it contains three elements.
         // The element in the middle is a a separator so both rules can be applied,
         // as applying the first one might contradict the application of the second one
-        return asList(3, 0, 4);
+        return asList(3, 4);
     }
 
-    private Rule rule() {
+    private Rule rule () {
         return new RulesThatEnableOtherRules(
-                new LimitedGasRule(
-                        new RuleReplaceA3ByA5UnlessNextIsA5(), 1, 1),
-                new LimitedGasRule(
-                        new RuleReplaceA4ByA3UnlessPreviousIsA5(), 1, 1)
-                );
+                        new RuleReplaceA3ByA5UnlessNextIsA5(),
+                        new RuleReplaceA4ByA3UnlessPreviousIsA5(),
+                                new LimitedGasTank(2, 2),
+                                new LimitedGasTank(2, 2));
+
     }
 
     private Rule[] rules () {
         return new Rule[]{
                 rule(),
-                new RuleIdentity()
         };
     }
 }

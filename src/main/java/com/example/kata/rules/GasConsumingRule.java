@@ -1,18 +1,19 @@
 package com.example.kata.rules;
 
 import com.example.kata.numerology.Elements;
+import com.example.kata.numerology.rules.Gas;
 import com.example.kata.numerology.rules.Rule;
 import io.vavr.control.Option;
 
 import java.util.List;
 
-public class GasConsumingRule implements Rule {
+public class GasConsumingRule implements Rule, Gas {
     private final Rule rule;
-    private int availableGas;
+    private GasTank gasTank;
 
-    public GasConsumingRule(Rule rule, int availableGas) {
+    public GasConsumingRule(Rule rule, GasTank availableGas) {
         this.rule = rule;
-        this.availableGas = availableGas;
+        this.gasTank = availableGas;
     }
 
     @Override
@@ -27,16 +28,18 @@ public class GasConsumingRule implements Rule {
         return Option.none();
     }
 
-    protected void refuel() {
-        availableGas += 1;
+    @Override
+    public void refuel () {
+        gasTank = gasTank.refuel();
     }
 
-    protected void consumeGas() {
-        availableGas -= 1;
+    @Override
+    public void consumeGas () {
+        gasTank = gasTank.consume();
     }
 
     private boolean hasGas() {
-        return availableGas > 0;
+        return !gasTank.isEmpty();
     }
 
     @Override

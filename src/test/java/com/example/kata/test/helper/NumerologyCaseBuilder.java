@@ -6,7 +6,6 @@ import com.example.kata.numerology.rules.Rule;
 import java.util.List;
 
 public class NumerologyCaseBuilder {
-    private List<Integer> input;
     private Numerology sut;
 
     public static NumerologyCaseBuilder applyingAllRules(Rule... rules) {

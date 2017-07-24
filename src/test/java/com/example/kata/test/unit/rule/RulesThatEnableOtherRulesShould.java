@@ -1,7 +1,8 @@
 package com.example.kata.test.unit.rule;
 
+import com.example.kata.numerology.LimitedGasTank;
 import com.example.kata.numerology.rules.Rule;
-import com.example.kata.rules.LimitedGasRule;
+import com.example.kata.rules.GasTank;
 import com.example.kata.rules.RulesThatEnableOtherRules;
 import org.junit.Test;
 
@@ -46,11 +47,15 @@ public class RulesThatEnableOtherRulesShould {
     }
 
     private Rule rule() {
-        return new RulesThatEnableOtherRules(replacement(0, 1), replacement(1, 2));
+        return new RulesThatEnableOtherRules(replacement(0, 1), replacement(1, 2), new GasTank(1), new GasTank(1));
     }
 
     private Rule limitedGasrule() {
-        return new RulesThatEnableOtherRules(new LimitedGasRule(replacement(0, 1), 1,1), new LimitedGasRule(replacement(1, 2), 1, 1));
+        return new RulesThatEnableOtherRules(
+                replacement(0, 1),
+                replacement(1, 2),
+                new LimitedGasTank(1,1),
+                new LimitedGasTank(1,1));
     }
 
 

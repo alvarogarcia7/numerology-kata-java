@@ -8,19 +8,34 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class RulesThatEnableOtherRules implements Rule {
-    private final GasConsumingRule gasConsumingRule1;
-    private final GasConsumingRule gasConsumingRule2;
-    private final RefuelingScheme refuelingScheme;
+    private GasConsumingRule gasConsumingRule1;
+    private final Rule rule1;
+    private GasConsumingRule gasConsumingRule2;
+    private final Rule rule2;
+    private final GasTank availableGas2;
+    private final GasTank availableGas1;
+    private RefuelingScheme refuelingScheme;
 
-    public RulesThatEnableOtherRules(Rule rule1, Rule rule2) {
-        gasConsumingRule1 = new GasConsumingRule(rule1, 1);
-        gasConsumingRule2 = new GasConsumingRule(rule2, 1);
+    public RulesThatEnableOtherRules (Rule rule1, Rule rule2, final GasTank availableGas1, final GasTank
+            availableGas2) {
+        this.rule1 = rule1;
+        this.rule2 = rule2;
+        this.availableGas1 = availableGas1;
+        this.availableGas2 = availableGas2;
+        initialize(rule1, rule2);
+    }
+
+    private void initialize (final Rule rule1, final Rule rule2) {
+        gasConsumingRule1 = new GasConsumingRule(rule1, availableGas1.clone_());
+        gasConsumingRule2 = new GasConsumingRule(rule2, availableGas2.clone_());
         this.refuelingScheme = alternatingRefuelingScheme(gasConsumingRule1, gasConsumingRule2);
     }
 
     @Override
     public Option<List<Integer>> apply(Elements elements, int index) {
         //calculate state of rules until now
+
+        initialize(rule1, rule2);
         for (int i = 0; i < index; i++) {
             final int finalI = i;
             gasConsumingRule1.apply(elements, i).map(x -> {
