@@ -25,10 +25,6 @@ public class RuleStep3_1Should {
     //more than one 3 or 4 in a go without having replaced one instance of the other
     //in between
 
-
-    //3,X,4,X,3,X,4,X,3,X,4 (valid where X <> 5)
-    //5,X,3,X,5,X,3,X,5,X,3
-
     @Test
     public void apply_the_rule_to_the_first_pair () {
         assertThat(apply(rule()).to(flattened(input())).at(0), is(Option.of(asList(5))));
