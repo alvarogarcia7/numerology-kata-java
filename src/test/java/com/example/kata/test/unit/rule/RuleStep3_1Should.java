@@ -50,11 +50,6 @@ public class RuleStep3_1Should {
         assertThat(to, is(flattened(output(), output())));
     }
 
-    private List<Integer> flattened (final List<Integer>... inputs) {
-        List<Integer> result = Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
-        return result;
-    }
-
     private Rule rule () {
         return new RulesThatEnableOtherRules(
                         new RuleReplaceA3ByA5UnlessNextIsA5(),
@@ -68,6 +63,11 @@ public class RuleStep3_1Should {
         return new Rule[]{
                 rule(),
         };
+    }
+
+    private List<Integer> flattened (final List<Integer>... inputs) {
+        List<Integer> result = Arrays.stream(inputs).flatMap(Collection::stream).collect(Collectors.toList());
+        return result;
     }
 
     private List<Integer> input () {
