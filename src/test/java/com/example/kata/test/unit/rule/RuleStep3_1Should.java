@@ -41,16 +41,16 @@ public class RuleStep3_1Should {
 
     @Test
     public void apply_all_rules_to_the_first_pair () {
-        assertThat(applyingAllRules(rules()).to(flattened(input())), is(outputPair()));
+        assertThat(applyingAllRules(rules()).to(flattened(input())), is(output()));
     }
 
     @Test
     public void apply_all_rules_to_two_pairs () {
         List<Integer> to = applyingAllRules(rules()).to(flattened(input(), input()));
-        assertThat(to, is(flattened(outputPair(), outputPair())));
+        assertThat(to, is(flattened(output(), output())));
     }
 
-    List<Integer> outputPair () {
+    List<Integer> output () {
         return asList(5, 3);
     }
 
